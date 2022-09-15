@@ -1,0 +1,5 @@
+string connectionString = "Data Source=\"<Path>"";
+SqlConnection connect = new SqlConnection(connectionString);
+connect.Open();
+MessageBox.Show("OPEN");
+connect.Close();
