@@ -17,17 +17,25 @@ namespace MusicStoreInventory
             InitializeComponent();
         }
 
+        SQL_Helper data;
         private void FormMain_Load(object sender, EventArgs e)
         {
-            
+            //try
+            //{
+            //    data = new SQL_Helper("Server=localhost;Integrated security=SSPI;database=master");
+            //}
+            //catch (Exception exception)
+            //{
+            //    MessageBox.Show(exception.Message);
+            //}
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-            //Integer rBt check
+            // Check for radio buttons with integer type
             if (rBtStock.Checked || rBtBarcode.Checked || rBtSerial.Checked || rBtCustomerID.Checked)
             {
-                //Validate Input
+                // Check if input is an integer
                 int parseResult;
                 int.TryParse(txtSearch.Text, out parseResult);
                 if(parseResult == 0)
@@ -37,7 +45,6 @@ namespace MusicStoreInventory
                     string query = txtSearch.Text;
                     MessageBox.Show("Query: " + query);
                 }
-                //Query
             }
             else if(rBtStatus.Checked)
             {
@@ -50,6 +57,25 @@ namespace MusicStoreInventory
                 string query = txtSearch.Text;
                 MessageBox.Show("Query: " + query);
             }
+
+            //////////////////////////////////////// Under Construction ////////////////////////////////////////
+            return;
+
+            string table = "Instruments";
+            if (rBtStock.Checked)
+                data.Search(table, "Stock");
+            else if (rBtBarcode.Checked)
+                data.Search(table, "Barcode");
+            else if (rBtInstrument.Checked)
+                data.Search(table, "Instrument");
+            else if (rBtSerial.Checked)
+                data.Search(table, "Serial");
+            else if (rBtStatus.Checked)
+                data.Search(table, "Status");
+            else if (rBtCustomerID.Checked)
+                data.Search(table, "CustomerID");
+            else if (rBtCustomerName.Checked)
+                data.Search(table, "Customer_Name");
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
