@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
+using System.Data.OleDb;
 
 namespace MusicStoreInventory
 {
     class SQL_Helper
     {
-        private SqlConnection myConnect;
+        private OleDbConnection myConnection;
 
         // Default Constructor
         public SQL_Helper()
@@ -20,22 +20,22 @@ namespace MusicStoreInventory
         // Constructor
         public SQL_Helper(string connectionString)
         {
-            myConnect = new SqlConnection(connectionString);
-            myConnect.Open();
-            if (myConnect.State != System.Data.ConnectionState.Open)
+            myConnection = new OleDbConnection(connectionString);
+            myConnection.Open();
+            if (myConnection.State != System.Data.ConnectionState.Open)
                 throw new Exception("Error: Connection Failed");
         }
 
         // Deconstructor
         ~SQL_Helper()
         {
-            myConnect.Close();
+            myConnection.Close();
         }
 
-        public void Search(string table, string column)
+        public void Search(string table, string column, string searchTerm)
         {
-            string commandString = "SELECT " + column + " FROM " +table;
-            SqlCommand myCommand = new SqlCommand(commandString);
+            string commandString = "SELECT " + column + ";\n FROM " + table + ";\n WHERE " + searchTerm +';';
+            OleDbCommand myCommand = new OleDbCommand(commandString);
         }
     }
 }

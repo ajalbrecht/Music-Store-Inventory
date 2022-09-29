@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -44,14 +45,37 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.instrument_DatabaseDataSet = new MusicStoreInventory.Instrument_DatabaseDataSet();
+            this.instrumentDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.customerTableAdapter = new MusicStoreInventory.Instrument_DatabaseDataSetTableAdapters.CustomerTableAdapter();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.instrumentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.instrumentTableAdapter = new MusicStoreInventory.Instrument_DatabaseDataSetTableAdapters.InstrumentTableAdapter();
+            this.instrumentBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.paymentinfoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gBxSearchCriteria.SuspendLayout();
             this.gBxAdEdDe.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.instrument_DatabaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instrumentDatabaseDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instrumentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instrumentBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iDDataGridViewTextBoxColumn,
+            this.customerNameDataGridViewTextBoxColumn,
+            this.addressDataGridViewTextBoxColumn,
+            this.paymentinfoDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.customerBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 129);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(528, 239);
@@ -214,6 +238,63 @@
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
+            // instrument_DatabaseDataSet
+            // 
+            this.instrument_DatabaseDataSet.DataSetName = "Instrument_DatabaseDataSet";
+            this.instrument_DatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // instrumentDatabaseDataSetBindingSource
+            // 
+            this.instrumentDatabaseDataSetBindingSource.DataSource = this.instrument_DatabaseDataSet;
+            this.instrumentDatabaseDataSetBindingSource.Position = 0;
+            // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataMember = "Customer";
+            this.customerBindingSource.DataSource = this.instrumentDatabaseDataSetBindingSource;
+            // 
+            // customerTableAdapter
+            // 
+            this.customerTableAdapter.ClearBeforeFill = true;
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            // 
+            // instrumentBindingSource
+            // 
+            this.instrumentBindingSource.DataMember = "Instrument";
+            this.instrumentBindingSource.DataSource = this.instrumentDatabaseDataSetBindingSource;
+            // 
+            // instrumentTableAdapter
+            // 
+            this.instrumentTableAdapter.ClearBeforeFill = true;
+            // 
+            // instrumentBindingSource1
+            // 
+            this.instrumentBindingSource1.DataMember = "Instrument";
+            this.instrumentBindingSource1.DataSource = this.instrumentDatabaseDataSetBindingSource;
+            // 
+            // paymentinfoDataGridViewTextBoxColumn
+            // 
+            this.paymentinfoDataGridViewTextBoxColumn.DataPropertyName = "Payment_info";
+            this.paymentinfoDataGridViewTextBoxColumn.HeaderText = "Payment_info";
+            this.paymentinfoDataGridViewTextBoxColumn.Name = "paymentinfoDataGridViewTextBoxColumn";
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            // 
+            // customerNameDataGridViewTextBoxColumn
+            // 
+            this.customerNameDataGridViewTextBoxColumn.DataPropertyName = "Customer_Name";
+            this.customerNameDataGridViewTextBoxColumn.HeaderText = "Customer_Name";
+            this.customerNameDataGridViewTextBoxColumn.Name = "customerNameDataGridViewTextBoxColumn";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,6 +310,11 @@
             this.gBxSearchCriteria.ResumeLayout(false);
             this.gBxSearchCriteria.PerformLayout();
             this.gBxAdEdDe.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.instrument_DatabaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instrumentDatabaseDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instrumentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instrumentBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -251,6 +337,17 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.BindingSource instrumentDatabaseDataSetBindingSource;
+        private Instrument_DatabaseDataSet instrument_DatabaseDataSet;
+        private System.Windows.Forms.BindingSource customerBindingSource;
+        private Instrument_DatabaseDataSetTableAdapters.CustomerTableAdapter customerTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource instrumentBindingSource;
+        private Instrument_DatabaseDataSetTableAdapters.InstrumentTableAdapter instrumentTableAdapter;
+        private System.Windows.Forms.BindingSource instrumentBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paymentinfoDataGridViewTextBoxColumn;
     }
 }
 

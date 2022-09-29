@@ -20,62 +20,63 @@ namespace MusicStoreInventory
         SQL_Helper data;
         private void FormMain_Load(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    data = new SQL_Helper("Server=localhost;Integrated security=SSPI;database=master");
-            //}
-            //catch (Exception exception)
-            //{
-            //    MessageBox.Show(exception.Message);
-            //}
+            // TODO: This line of code loads data into the 'instrument_DatabaseDataSet.Instrument' table. You can move, or remove it, as needed.
+            this.instrumentTableAdapter.Fill(this.instrument_DatabaseDataSet.Instrument);
+            // TODO: This line of code loads data into the 'instrument_DatabaseDataSet.Customer' table. You can move, or remove it, as needed.
+            this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
+
+            Sandbox test = new Sandbox("Provider= Microsoft.Jet.OLEDB.4.0; Data Source = \"C:\\Users\\patrickmcbrien\\Downloads\\Music-Store-Inventory-main\\Instrument Database.mdb\"");
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             // Check for radio buttons with integer type
+            bool isValid = false;
+            string query = txtSearch.Text;
             if (rBtStock.Checked || rBtBarcode.Checked || rBtSerial.Checked || rBtCustomerID.Checked)
             {
                 // Check if input is an integer
                 int parseResult;
-                int.TryParse(txtSearch.Text, out parseResult);
-                if(parseResult == 0)
+                int.TryParse(query, out parseResult);
+                if (parseResult == 0)
                     MessageBox.Show("Error: Enter an Integer");
                 else
-                {
-                    string query = txtSearch.Text;
-                    MessageBox.Show("Query: " + query);
-                }
+                    isValid = true;
             }
             else if(rBtStatus.Checked)
             {
                 //Test if valid status
-                string query = txtSearch.Text;
+                isValid = true;
+
                 MessageBox.Show("Query: " + query);
             }
             else
             {
-                string query = txtSearch.Text;
+                isValid = true;
                 MessageBox.Show("Query: " + query);
             }
 
             //////////////////////////////////////// Under Construction ////////////////////////////////////////
-            return;
-
-            string table = "Instruments";
-            if (rBtStock.Checked)
-                data.Search(table, "Stock");
-            else if (rBtBarcode.Checked)
-                data.Search(table, "Barcode");
-            else if (rBtInstrument.Checked)
-                data.Search(table, "Instrument");
-            else if (rBtSerial.Checked)
-                data.Search(table, "Serial");
-            else if (rBtStatus.Checked)
-                data.Search(table, "Status");
-            else if (rBtCustomerID.Checked)
-                data.Search(table, "CustomerID");
-            else if (rBtCustomerName.Checked)
-                data.Search(table, "Customer_Name");
+            
+            if(isValid)
+            {
+                string table = "Instruments";
+                if (rBtStock.Checked)
+                    data.Search(table, "Stock", query);
+                else if (rBtBarcode.Checked)
+                    data.Search(table, "Barcode", query);
+                else if (rBtInstrument.Checked)
+                    data.Search(table, "Instrument", query);
+                else if (rBtSerial.Checked)
+                    data.Search(table, "Serial", query);
+                else if (rBtStatus.Checked)
+                    data.Search(table, "Status", query);
+                else if (rBtCustomerID.Checked)
+                    data.Search(table, "CustomerID", query);
+                else if (rBtCustomerName.Checked)
+                    data.Search(table, "Customer_Name", query);
+            }
+            this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
