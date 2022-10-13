@@ -24,10 +24,10 @@ namespace MusicStoreInventory
             //this.instrumentTableAdapter.Fill(this.instrument_DatabaseDataSet.Instrument);
             // TODO: This line of code loads data into the 'instrument_DatabaseDataSet.Customer' table. You can move, or remove it, as needed.
             //this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
-            
-            //MessageBox.Show("Domain: " + AppDomain.CurrentDomain.BaseDirectory);
-            data = new SQL_Helper("Provider= Microsoft.Jet.OLEDB.4.0; Data Source = \"C:\\Users\\patrickmcbrien\\Downloads\\Music-Store-Inventory-main\\Instrument Database.mdb\"");
-            //MessageBox.Show("Database: " + data.show());
+
+            string directory = AppDomain.CurrentDomain.BaseDirectory;
+            data = new SQL_Helper("Provider= Microsoft.Jet.OLEDB.4.0; Data Source = \"" + directory + "Instrument Database.mdb\"");
+            //data = new SQL_Helper("Provider= Microsoft.Jet.OLEDB.4.0; Data Source = \"C:\\Users\\patrickmcbrien\\Downloads\\Music-Store-Inventory-main\\Instrument Database.mdb\"");
             data.search("Customers", "Customer_Name", "John Smith");
             this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
         }
@@ -107,9 +107,21 @@ namespace MusicStoreInventory
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            int error = data.add("11", "The Dude", "123 Street", "Card");
-            this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
-            txtSearch.Text = error.ToString();
+            string errorMessage = data.add("11", "The Dude", "123 Street", "Card");
+            if(errorMessage != "")
+                MessageBox.Show("Error: " + errorMessage);
+            else
+                this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
+        }
+
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

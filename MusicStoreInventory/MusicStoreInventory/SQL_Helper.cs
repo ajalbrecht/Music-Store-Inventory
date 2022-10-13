@@ -44,18 +44,18 @@ namespace MusicStoreInventory
             OleDbCommand myCommand = new OleDbCommand(commandString);
         }
 
-        // return integer based on end state
-        // returning 0 is means success
-        // returning 1 is a connection error
-        // returning 2 is an issue with the query (duplicate primary key most likely)
-        public int add(string ID, string name, string address, string payment)
+        // returns error as string
+        // No errors returns ""
+        public string add(string ID, string name, string address, string payment)
         {
             myConnection.Open();
+            // WIP
             if (myConnection.State != System.Data.ConnectionState.Open)
             {
                 myConnection.Close();
-                return 1;
+                return "Connection Failed to Connect";
             }
+
             OleDbCommand myCommand = new OleDbCommand("Insert into Customer ([ID],[Customer_Name],[Address],[Payment_Info]) " +
                     "values('" 
                     + ID + "','"
@@ -63,19 +63,46 @@ namespace MusicStoreInventory
                     + address + "','" 
                     + payment + "')", myConnection);
 
-            myCommand.ExecuteNonQuery();
             try
             {
-
+                myCommand.ExecuteNonQuery();
             }
             catch (Exception e)
             {
                 myConnection.Close();
-                return 2;
+                return e.Message;
             }
 
             myConnection.Close();
-            return 0;
+            return "";
+        }
+
+        public string update(string name, string address, string payment)
+        {
+            myConnection.Open();
+            OleDbCommand myCommand = new OleDbCommand("Update Customer set " +
+                "Customer_Name='" + name +
+                "Address='" + address +
+                "'Payment_Info='" + payment, myConnection);
+
+            try
+            {
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                myConnection.Close();
+                return e.Message;
+            }
+
+            myConnection.Close();
+            return "";
+        }
+
+        public string delete(string ID)
+        {
+            //OleDb.OleDbCommand("delete from Addresses where CustID= " & customerID)
+            return "";
         }
     }
 }
