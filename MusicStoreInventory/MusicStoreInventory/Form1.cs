@@ -21,11 +21,15 @@ namespace MusicStoreInventory
         private void FormMain_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'instrument_DatabaseDataSet.Instrument' table. You can move, or remove it, as needed.
-            this.instrumentTableAdapter.Fill(this.instrument_DatabaseDataSet.Instrument);
+            //this.instrumentTableAdapter.Fill(this.instrument_DatabaseDataSet.Instrument);
             // TODO: This line of code loads data into the 'instrument_DatabaseDataSet.Customer' table. You can move, or remove it, as needed.
+            //this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
+            
+            //MessageBox.Show("Domain: " + AppDomain.CurrentDomain.BaseDirectory);
+            data = new SQL_Helper("Provider= Microsoft.Jet.OLEDB.4.0; Data Source = \"C:\\Users\\patrickmcbrien\\Downloads\\Music-Store-Inventory-main\\Instrument Database.mdb\"");
+            //MessageBox.Show("Database: " + data.show());
+            data.search("Customers", "Customer_Name", "John Smith");
             this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
-
-            Sandbox test = new Sandbox("Provider= Microsoft.Jet.OLEDB.4.0; Data Source = \"C:\\Users\\patrickmcbrien\\Downloads\\Music-Store-Inventory-main\\Instrument Database.mdb\"");
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -57,31 +61,55 @@ namespace MusicStoreInventory
             }
 
             //////////////////////////////////////// Under Construction ////////////////////////////////////////
-            
-            if(isValid)
+            if (isValid)
             {
-                string table = "Instruments";
-                if (rBtStock.Checked)
-                    data.Search(table, "Stock", query);
-                else if (rBtBarcode.Checked)
-                    data.Search(table, "Barcode", query);
-                else if (rBtInstrument.Checked)
-                    data.Search(table, "Instrument", query);
-                else if (rBtSerial.Checked)
-                    data.Search(table, "Serial", query);
-                else if (rBtStatus.Checked)
-                    data.Search(table, "Status", query);
-                else if (rBtCustomerID.Checked)
-                    data.Search(table, "CustomerID", query);
-                else if (rBtCustomerName.Checked)
-                    data.Search(table, "Customer_Name", query);
+                string table = "Customers";
+                data.search("Customers", "Customer_Name", "");
             }
+            //if (isValid)
+            //{
+            //    string table = "Instruments";
+            //    if (rBtStock.Checked)
+            //        data.Search(table, "Stock", query);
+            //    else if (rBtBarcode.Checked)
+            //        data.Search(table, "Barcode", query);
+            //    else if (rBtInstrument.Checked)
+            //        data.Search(table, "Instrument", query);
+            //    else if (rBtSerial.Checked)
+            //        data.Search(table, "Serial", query);
+            //    else if (rBtStatus.Checked)
+            //        data.Search(table, "Status", query);
+            //    else if (rBtCustomerID.Checked)
+            //        data.Search(table, "CustomerID", query);
+            //    else if (rBtCustomerName.Checked)
+            //        data.Search(table, "Customer_Name", query);
+            //}
             this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void BtnTest_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show(a.Message);
+                throw;
+            }
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            int error = data.add("11", "The Dude", "123 Street", "Card");
+            this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
+            txtSearch.Text = error.ToString();
         }
     }
 }
