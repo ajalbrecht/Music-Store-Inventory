@@ -99,10 +99,22 @@ namespace MusicStoreInventory
             return "";
         }
 
-        public string delete(string ID)
+        public void delete(string customerID)
         {
-            //OleDb.OleDbCommand("delete from Addresses where CustID= " & customerID)
-            return "";
+            myConnection.Open();
+            OleDbCommand myCommand = new OleDbCommand("delete from Customer where ID = " + customerID, myConnection);
+
+            try
+            {
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                myConnection.Close();
+                throw e;
+            }
+
+            myConnection.Close();
         }
     }
 }

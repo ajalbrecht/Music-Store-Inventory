@@ -4,12 +4,12 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection ConnectionStringObject="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=&quot;C:\Users\patrickmcbrien\Downloads\Music-Store-Inventory-main\Instrument Database.mdb&quot;" IsAppSettingsProperty="false" Modifier="Assembly" Name="Instrument Database.mdb" Provider="System.Data.OleDb" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Instrument_DatabaseConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Instrument_DatabaseConnectionString (Settings)" PropertyReference="ApplicationSettings.MusicStoreInventory.Properties.Settings.GlobalReference.Default.Instrument_DatabaseConnectionString" Provider="System.Data.OleDb" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CustomerTableAdapter" GeneratorDataComponentClassName="CustomerTableAdapter" Name="Customer" UserDataComponentName="CustomerTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Instrument Database.mdb" DbObjectName="Customer" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Instrument_DatabaseConnectionString (Settings)" DbObjectName="Customer" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `Customer` WHERE ((`ID` = ?) AND ((? = 1 AND `Customer_Name` IS NULL) OR (`Customer_Name` = ?)))</CommandText>
@@ -61,7 +61,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="InstrumentTableAdapter" GeneratorDataComponentClassName="InstrumentTableAdapter" Name="Instrument" UserDataComponentName="InstrumentTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="Instrument Database.mdb" DbObjectName="Instrument" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Instrument_DatabaseConnectionString (Settings)" DbObjectName="Instrument" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `Instrument` WHERE ((`ID` = ?) AND ((? = 1 AND `Price` IS NULL) OR (`Price` = ?)) AND ((? = 1 AND `Instrument_Name` IS NULL) OR (`Instrument_Name` = ?)) AND ((? = 1 AND `Make` IS NULL) OR (`Make` = ?)) AND ((? = 1 AND `Size` IS NULL) OR (`Size` = ?)) AND ((? = 1 AND `Quality` IS NULL) OR (`Quality` = ?)))</CommandText>

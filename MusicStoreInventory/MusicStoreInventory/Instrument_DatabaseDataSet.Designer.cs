@@ -1456,8 +1456,7 @@ namespace MusicStoreInventory.Instrument_DatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\"C:\\Users\\patrickmcbrien\\Downloads\\M" +
-                "usic-Store-Inventory-main\\Instrument Database.mdb\"";
+            this._connection.ConnectionString = global::MusicStoreInventory.Properties.Settings.Default.Instrument_DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1820,8 +1819,7 @@ namespace MusicStoreInventory.Instrument_DatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.OleDb.OleDbConnection();
-            this._connection.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\"C:\\Users\\patrickmcbrien\\Downloads\\M" +
-                "usic-Store-Inventory-main\\Instrument Database.mdb\"";
+            this._connection.ConnectionString = global::MusicStoreInventory.Properties.Settings.Default.Instrument_DatabaseConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

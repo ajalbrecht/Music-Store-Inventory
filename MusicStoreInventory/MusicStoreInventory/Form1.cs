@@ -20,14 +20,9 @@ namespace MusicStoreInventory
         SQL_Helper data;
         private void FormMain_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'instrument_DatabaseDataSet.Instrument' table. You can move, or remove it, as needed.
-            //this.instrumentTableAdapter.Fill(this.instrument_DatabaseDataSet.Instrument);
-            // TODO: This line of code loads data into the 'instrument_DatabaseDataSet.Customer' table. You can move, or remove it, as needed.
-            //this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
-
-            string directory = AppDomain.CurrentDomain.BaseDirectory;
-            data = new SQL_Helper("Provider= Microsoft.Jet.OLEDB.4.0; Data Source = \"" + directory + "Instrument Database.mdb\"");
-            //data = new SQL_Helper("Provider= Microsoft.Jet.OLEDB.4.0; Data Source = \"C:\\Users\\patrickmcbrien\\Downloads\\Music-Store-Inventory-main\\Instrument Database.mdb\"");
+            //string directory = AppDomain.CurrentDomain.BaseDirectory;
+            //data = new SQL_Helper("Provider= Microsoft.Jet.OLEDB.4.0; Data Source = \"" + directory + "Instrument Database.mdb\"");
+            data = new SQL_Helper("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\"|DataDirectory|\\Instrument Database.mdb\"");
             data.search("Customers", "Customer_Name", "John Smith");
             this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
         }
@@ -92,19 +87,6 @@ namespace MusicStoreInventory
             this.Close();
         }
 
-        private void BtnTest_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                
-            }
-            catch (Exception a)
-            {
-                MessageBox.Show(a.Message);
-                throw;
-            }
-        }
-
         private void BtnAdd_Click(object sender, EventArgs e)
         {
             string errorMessage = data.add("11", "The Dude", "123 Street", "Card");
@@ -121,7 +103,21 @@ namespace MusicStoreInventory
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
+            try
+            {
+                data.delete("11");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                throw;
+            }
+            this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
+        }
 
+        private void BtnTest_Click(object sender, EventArgs e)
+        {
+            //dataGridView1.
         }
     }
 }
