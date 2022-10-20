@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvMain = new System.Windows.Forms.DataGridView();
+            this.instrument_DatabaseDataSet = new MusicStoreInventory.Instrument_DatabaseDataSet();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.gBxSearchCriteria = new System.Windows.Forms.GroupBox();
@@ -49,39 +50,48 @@
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtCustomerID = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblPamentInfo = new System.Windows.Forms.Label();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblCustomerID = new System.Windows.Forms.Label();
             this.btnTest = new System.Windows.Forms.Button();
-            this.instrument_DatabaseDataSet = new MusicStoreInventory.Instrument_DatabaseDataSet();
+            this.gBxSelectTable = new System.Windows.Forms.GroupBox();
+            this.rBtTransactions = new System.Windows.Forms.RadioButton();
+            this.rBtCustomers = new System.Windows.Forms.RadioButton();
+            this.rBtInstruments = new System.Windows.Forms.RadioButton();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.customerTableAdapter = new MusicStoreInventory.Instrument_DatabaseDataSetTableAdapters.CustomerTableAdapter();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymentinfoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instrument_DatabaseDataSet)).BeginInit();
             this.gBxSearchCriteria.SuspendLayout();
             this.gBxAdEdDe.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.instrument_DatabaseDataSet)).BeginInit();
+            this.gBxSelectTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvMain
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvMain.AutoGenerateColumns = false;
+            this.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
             this.customerNameDataGridViewTextBoxColumn,
             this.addressDataGridViewTextBoxColumn,
             this.paymentinfoDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.customerBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 129);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(528, 239);
-            this.dataGridView1.TabIndex = 9;
+            this.dgvMain.DataSource = this.customerBindingSource;
+            this.dgvMain.Location = new System.Drawing.Point(12, 184);
+            this.dgvMain.Name = "dgvMain";
+            this.dgvMain.Size = new System.Drawing.Size(528, 239);
+            this.dgvMain.TabIndex = 9;
+            // 
+            // instrument_DatabaseDataSet
+            // 
+            this.instrument_DatabaseDataSet.DataSetName = "Instrument_DatabaseDataSet";
+            this.instrument_DatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtSearch
             // 
@@ -112,7 +122,7 @@
             this.gBxSearchCriteria.Controls.Add(this.rBtInstrument);
             this.gBxSearchCriteria.Controls.Add(this.rBtBarcode);
             this.gBxSearchCriteria.Controls.Add(this.rBtStock);
-            this.gBxSearchCriteria.Location = new System.Drawing.Point(12, 9);
+            this.gBxSearchCriteria.Location = new System.Drawing.Point(12, 64);
             this.gBxSearchCriteria.Name = "gBxSearchCriteria";
             this.gBxSearchCriteria.Size = new System.Drawing.Size(362, 114);
             this.gBxSearchCriteria.TabIndex = 10;
@@ -206,7 +216,7 @@
             this.gBxAdEdDe.Controls.Add(this.btnDelete);
             this.gBxAdEdDe.Controls.Add(this.btnEdit);
             this.gBxAdEdDe.Controls.Add(this.btnAdd);
-            this.gBxAdEdDe.Location = new System.Drawing.Point(381, 9);
+            this.gBxAdEdDe.Location = new System.Drawing.Point(381, 64);
             this.gBxAdEdDe.Name = "gBxAdEdDe";
             this.gBxAdEdDe.Size = new System.Drawing.Size(159, 114);
             this.gBxAdEdDe.TabIndex = 11;
@@ -245,7 +255,7 @@
             // 
             // txtPaymentInfo
             // 
-            this.txtPaymentInfo.Location = new System.Drawing.Point(663, 158);
+            this.txtPaymentInfo.Location = new System.Drawing.Point(663, 187);
             this.txtPaymentInfo.Margin = new System.Windows.Forms.Padding(2);
             this.txtPaymentInfo.Name = "txtPaymentInfo";
             this.txtPaymentInfo.Size = new System.Drawing.Size(76, 20);
@@ -253,7 +263,7 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(663, 113);
+            this.txtAddress.Location = new System.Drawing.Point(663, 142);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(2);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(76, 20);
@@ -261,7 +271,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(663, 71);
+            this.txtName.Location = new System.Drawing.Point(663, 100);
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(76, 20);
@@ -269,55 +279,55 @@
             // 
             // txtCustomerID
             // 
-            this.txtCustomerID.Location = new System.Drawing.Point(663, 26);
+            this.txtCustomerID.Location = new System.Drawing.Point(663, 55);
             this.txtCustomerID.Margin = new System.Windows.Forms.Padding(2);
             this.txtCustomerID.Name = "txtCustomerID";
             this.txtCustomerID.Size = new System.Drawing.Size(76, 20);
             this.txtCustomerID.TabIndex = 16;
             // 
-            // label4
+            // lblPamentInfo
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(565, 160);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 13);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Payment Info";
+            this.lblPamentInfo.AutoSize = true;
+            this.lblPamentInfo.Location = new System.Drawing.Point(565, 189);
+            this.lblPamentInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPamentInfo.Name = "lblPamentInfo";
+            this.lblPamentInfo.Size = new System.Drawing.Size(69, 13);
+            this.lblPamentInfo.TabIndex = 15;
+            this.lblPamentInfo.Text = "Payment Info";
             // 
-            // label3
+            // lblAddress
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(565, 115);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Address";
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Location = new System.Drawing.Point(565, 144);
+            this.lblAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(45, 13);
+            this.lblAddress.TabIndex = 14;
+            this.lblAddress.Text = "Address";
             // 
-            // label2
+            // lblName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(565, 71);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Name";
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(565, 100);
+            this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(35, 13);
+            this.lblName.TabIndex = 13;
+            this.lblName.Text = "Name";
             // 
-            // label1
+            // lblCustomerID
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(565, 26);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Customer ID";
+            this.lblCustomerID.AutoSize = true;
+            this.lblCustomerID.Location = new System.Drawing.Point(565, 55);
+            this.lblCustomerID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCustomerID.Name = "lblCustomerID";
+            this.lblCustomerID.Size = new System.Drawing.Size(65, 13);
+            this.lblCustomerID.TabIndex = 12;
+            this.lblCustomerID.Text = "Customer ID";
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(568, 211);
+            this.btnTest.Location = new System.Drawing.Point(568, 240);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(75, 23);
             this.btnTest.TabIndex = 20;
@@ -325,10 +335,52 @@
             this.btnTest.UseVisualStyleBackColor = true;
             this.btnTest.Click += new System.EventHandler(this.BtnTest_Click);
             // 
-            // instrument_DatabaseDataSet
+            // gBxSelectTable
             // 
-            this.instrument_DatabaseDataSet.DataSetName = "Instrument_DatabaseDataSet";
-            this.instrument_DatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.gBxSelectTable.Controls.Add(this.rBtTransactions);
+            this.gBxSelectTable.Controls.Add(this.rBtCustomers);
+            this.gBxSelectTable.Controls.Add(this.rBtInstruments);
+            this.gBxSelectTable.Location = new System.Drawing.Point(12, 12);
+            this.gBxSelectTable.Name = "gBxSelectTable";
+            this.gBxSelectTable.Size = new System.Drawing.Size(362, 46);
+            this.gBxSelectTable.TabIndex = 21;
+            this.gBxSelectTable.TabStop = false;
+            this.gBxSelectTable.Text = "Select Table:";
+            // 
+            // rBtTransactions
+            // 
+            this.rBtTransactions.AutoSize = true;
+            this.rBtTransactions.Location = new System.Drawing.Point(171, 19);
+            this.rBtTransactions.Name = "rBtTransactions";
+            this.rBtTransactions.Size = new System.Drawing.Size(86, 17);
+            this.rBtTransactions.TabIndex = 6;
+            this.rBtTransactions.Text = "Transactions";
+            this.rBtTransactions.UseVisualStyleBackColor = true;
+            this.rBtTransactions.Click += new System.EventHandler(this.RBtsTableSelect_Click);
+            // 
+            // rBtCustomers
+            // 
+            this.rBtCustomers.AutoSize = true;
+            this.rBtCustomers.Location = new System.Drawing.Point(91, 19);
+            this.rBtCustomers.Name = "rBtCustomers";
+            this.rBtCustomers.Size = new System.Drawing.Size(74, 17);
+            this.rBtCustomers.TabIndex = 5;
+            this.rBtCustomers.Text = "Customers";
+            this.rBtCustomers.UseVisualStyleBackColor = true;
+            this.rBtCustomers.Click += new System.EventHandler(this.RBtsTableSelect_Click);
+            // 
+            // rBtInstruments
+            // 
+            this.rBtInstruments.AutoSize = true;
+            this.rBtInstruments.Checked = true;
+            this.rBtInstruments.Location = new System.Drawing.Point(6, 19);
+            this.rBtInstruments.Name = "rBtInstruments";
+            this.rBtInstruments.Size = new System.Drawing.Size(79, 17);
+            this.rBtInstruments.TabIndex = 4;
+            this.rBtInstruments.TabStop = true;
+            this.rBtInstruments.Text = "Instruments";
+            this.rBtInstruments.UseVisualStyleBackColor = true;
+            this.rBtInstruments.Click += new System.EventHandler(this.RBtsTableSelect_Click);
             // 
             // customerBindingSource
             // 
@@ -367,27 +419,30 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(758, 380);
+            this.ClientSize = new System.Drawing.Size(767, 436);
+            this.Controls.Add(this.gBxSelectTable);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.txtPaymentInfo);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtCustomerID);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblPamentInfo);
+            this.Controls.Add(this.lblAddress);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.lblCustomerID);
             this.Controls.Add(this.gBxAdEdDe);
             this.Controls.Add(this.gBxSearchCriteria);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvMain);
             this.Name = "FormMain";
-            this.Text = "Database Manager v1.3";
+            this.Text = "Database Manager v1.4";
             this.Load += new System.EventHandler(this.FormMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instrument_DatabaseDataSet)).EndInit();
             this.gBxSearchCriteria.ResumeLayout(false);
             this.gBxSearchCriteria.PerformLayout();
             this.gBxAdEdDe.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.instrument_DatabaseDataSet)).EndInit();
+            this.gBxSelectTable.ResumeLayout(false);
+            this.gBxSelectTable.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -396,7 +451,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvMain;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.GroupBox gBxSearchCriteria;
@@ -416,12 +471,16 @@
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtCustomerID;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPamentInfo;
+        private System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblCustomerID;
         private System.Windows.Forms.Button btnTest;
         private Instrument_DatabaseDataSet instrument_DatabaseDataSet;
+        private System.Windows.Forms.GroupBox gBxSelectTable;
+        private System.Windows.Forms.RadioButton rBtTransactions;
+        private System.Windows.Forms.RadioButton rBtCustomers;
+        private System.Windows.Forms.RadioButton rBtInstruments;
         private System.Windows.Forms.BindingSource customerBindingSource;
         private Instrument_DatabaseDataSetTableAdapters.CustomerTableAdapter customerTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;

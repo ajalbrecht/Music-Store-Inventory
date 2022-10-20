@@ -23,15 +23,9 @@ namespace MusicStoreInventory
             myConnection = new OleDbConnection(connectionString);
         }
 
-        // Deconstructor
-        ~SQL_Helper()
-        {
-            // Fix later
-            //myConnection.Close();
-        }
-
         public string show()
         {
+
             return myConnection.Database.GetType().ToString();
         }
 

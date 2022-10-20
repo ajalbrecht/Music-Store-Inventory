@@ -20,11 +20,13 @@ namespace MusicStoreInventory
         SQL_Helper data;
         private void FormMain_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'instrument_DatabaseDataSet.Instrument' table. You can move, or remove it, as needed.
+            //this.instrumentTableAdapter.Fill(this.instrument_DatabaseDataSet.Instrument);
             //string directory = AppDomain.CurrentDomain.BaseDirectory;
             //data = new SQL_Helper("Provider= Microsoft.Jet.OLEDB.4.0; Data Source = \"" + directory + "Instrument Database.mdb\"");
             data = new SQL_Helper("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\"|DataDirectory|\\Instrument Database.mdb\"");
             data.search("Customers", "Customer_Name", "John Smith");
-            this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
+            refreshForm();
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -79,7 +81,7 @@ namespace MusicStoreInventory
             //    else if (rBtCustomerName.Checked)
             //        data.Search(table, "Customer_Name", query);
             //}
-            this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
+            refreshForm();
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
@@ -93,7 +95,7 @@ namespace MusicStoreInventory
             if(errorMessage != "")
                 MessageBox.Show("Error: " + errorMessage);
             else
-                this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
+                refreshForm();
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -112,12 +114,38 @@ namespace MusicStoreInventory
                 MessageBox.Show("Error: " + ex.Message);
                 throw;
             }
+            refreshForm();
+        }
+
+        private void RBtsTableSelect_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Object: " + sender.ToString());
+        }
+
+        private void refreshForm()
+        {
             this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
+            if (rBtInstrument.Checked)
+            {
+
+            }
+            else if (rBtCustomers.Checked)
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         private void BtnTest_Click(object sender, EventArgs e)
         {
-            //dataGridView1.
+            //this.instrumentTableAdapter.Fill(this.instrument_DatabaseDataSet.Instrument);
+            DataTable a = instrument_DatabaseDataSet.Customer;
+            dgvMain.DataSource = a;
+            dgvMain.Refresh();
+
         }
     }
 }
