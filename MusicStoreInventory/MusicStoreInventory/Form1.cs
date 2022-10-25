@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MusicStoreInventory.Instrument_DatabaseDataSetTableAdapters;
 
 namespace MusicStoreInventory
 {
@@ -17,13 +18,9 @@ namespace MusicStoreInventory
             InitializeComponent();
         }
 
-        SQL_Helper data;
+        private SQL_Helper data;
         private void FormMain_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'instrument_DatabaseDataSet.Instrument' table. You can move, or remove it, as needed.
-            //this.instrumentTableAdapter.Fill(this.instrument_DatabaseDataSet.Instrument);
-            //string directory = AppDomain.CurrentDomain.BaseDirectory;
-            //data = new SQL_Helper("Provider= Microsoft.Jet.OLEDB.4.0; Data Source = \"" + directory + "Instrument Database.mdb\"");
             data = new SQL_Helper("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\"|DataDirectory|\\Instrument Database.mdb\"");
             data.search("Customers", "Customer_Name", "John Smith");
             refreshForm();
@@ -119,19 +116,22 @@ namespace MusicStoreInventory
 
         private void RBtsTableSelect_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Object: " + sender.ToString());
+            refreshForm();
         }
 
         private void refreshForm()
         {
-            this.customerTableAdapter.Fill(this.instrument_DatabaseDataSet.Customer);
-            if (rBtInstrument.Checked)
+            if (rBtTableInstruments.Checked)
             {
-
+                InstrumentTableAdapter adapter = new InstrumentTableAdapter();
+                dgvMain.DataSource = instrument_DatabaseDataSet.Instrument;
+                adapter.Fill(this.instrument_DatabaseDataSet.Instrument);
             }
-            else if (rBtCustomers.Checked)
+            else if (rBtTableCustomers.Checked)
             {
-
+                CustomerTableAdapter adapter = new CustomerTableAdapter();
+                dgvMain.DataSource = instrument_DatabaseDataSet.Customer;
+                adapter.Fill(this.instrument_DatabaseDataSet.Customer);
             }
             else
             {
@@ -141,10 +141,7 @@ namespace MusicStoreInventory
 
         private void BtnTest_Click(object sender, EventArgs e)
         {
-            //this.instrumentTableAdapter.Fill(this.instrument_DatabaseDataSet.Instrument);
-            DataTable a = instrument_DatabaseDataSet.Customer;
-            dgvMain.DataSource = a;
-            dgvMain.Refresh();
+            
 
         }
     }

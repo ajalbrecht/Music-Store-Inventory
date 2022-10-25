@@ -84,6 +84,8 @@
     <None Include="Instrument_DatabaseDataSet.xss">
       <DependentUpon>Instrument_DatabaseDataSet.xsd</DependentUpon>
     </None>
+    <None Include="Properties\DataSources\MusicStoreInventory.Instrument_DatabaseDataSetTableAdapters.CustomerTableAdapter.datasource" />
+    <None Include="Properties\DataSources\MusicStoreInventory.Instrument_DatabaseDataSetTableAdapters.InstrumentTableAdapter.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
