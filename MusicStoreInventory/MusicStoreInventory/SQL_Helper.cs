@@ -31,47 +31,60 @@ namespace MusicStoreInventory
 
         public void search(string table, string column, string searchTerm)
         {
-            //myConnection.Open();
-            //if (myConnection.State != System.Data.ConnectionState.Open)
-            //    throw new Exception("Error: Connection Failed");
-            string commandString = "SELECT " + column + ";\n FROM " + table + ";\n WHERE " + searchTerm +';';
-            OleDbCommand myCommand = new OleDbCommand(commandString);
-        }
-
-        // returns error as string
-        // No errors returns ""
-        public string add(string ID, string name, string address, string payment)
-        {
             myConnection.Open();
-            // WIP
-            if (myConnection.State != System.Data.ConnectionState.Open)
-            {
-                myConnection.Close();
-                return "Connection Failed to Connect";
-            }
-
-            OleDbCommand myCommand = new OleDbCommand("Insert into Customer ([ID],[Customer_Name],[Address],[Payment_Info]) " +
-                    "values('" 
-                    + ID + "','"
-                    + name + "','" 
-                    + address + "','" 
-                    + payment + "')", myConnection);
+            OleDbCommand myCommand = new OleDbCommand("SELECT " + column + " FROM " + table + " WHERE " + column, myConnection);// + " = " + searchTerm, myConnection);
 
             try
             {
                 myCommand.ExecuteNonQuery();
             }
-            catch (Exception e)
+            catch (Exception exc)
             {
                 myConnection.Close();
-                return e.Message;
+                throw exc;
             }
 
             myConnection.Close();
-            return "";
         }
 
-        public string update(string name, string address, string payment)
+        public void add(string table, string in1, string in2 = "", string in3 = "", string in4 = "", string in5 = "", string in6 = "")
+        {
+            myConnection.Open();
+
+            OleDbCommand myCommand;
+            if (table == "Instrument")
+                myCommand = new OleDbCommand("Insert into Instrument ([ID],[Customer_Name],[Address],[Payment_Info]) " +
+                    "values('"
+                    + in1 + "','"
+                    + in2 + "','"
+                    + in3 + "','"
+                    + in4 + "')", myConnection);
+            else if (table == "Customer")
+                myCommand = new OleDbCommand("Insert into Customer ([ID],[Price],[Instrument_Name],[Make],[Size],[Quality]) " +
+                    "values('"
+                    + in1 + "','"
+                    + in2 + "','"
+                    + in3 + "','"
+                    + in4 + "','"
+                    + in5 + "','"
+                    + in6 + "')", myConnection);
+            else
+                throw new Exception("Table '" + table + "' not Found");            
+
+            try
+            {
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception exc)
+            {
+                myConnection.Close();
+                throw exc;
+            }
+
+            myConnection.Close();
+        }
+
+        public void update(string name, string address, string payment)
         {
             myConnection.Open();
             OleDbCommand myCommand = new OleDbCommand("Update Customer set " +
@@ -83,29 +96,28 @@ namespace MusicStoreInventory
             {
                 myCommand.ExecuteNonQuery();
             }
-            catch (Exception e)
+            catch (Exception exc)
             {
                 myConnection.Close();
-                return e.Message;
+                throw exc;
             }
 
-            myConnection.Close();
-            return "";
+                myConnection.Close();
         }
 
-        public void delete(string customerID)
+        public void delete(string table, string ID)
         {
             myConnection.Open();
-            OleDbCommand myCommand = new OleDbCommand("delete from Customer where ID = " + customerID, myConnection);
+            OleDbCommand myCommand = new OleDbCommand("Delete from " + table + " where ID = " + ID, myConnection);
 
             try
             {
                 myCommand.ExecuteNonQuery();
             }
-            catch (Exception e)
+            catch (Exception exc)
             {
                 myConnection.Close();
-                throw e;
+                throw exc;
             }
 
             myConnection.Close();
