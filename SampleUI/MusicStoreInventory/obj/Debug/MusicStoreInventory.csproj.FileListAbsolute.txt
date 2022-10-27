@@ -22,3 +22,17 @@ C:\Users\hayle\Source\Repos\Music-Store-Inventory\MusicStoreInventory\MusicStore
 C:\Users\hayle\Source\Repos\Music-Store-Inventory\MusicStoreInventory\MusicStoreInventory\obj\Debug\MusicStoreInventory.exe
 C:\Users\hayle\Source\Repos\Music-Store-Inventory\MusicStoreInventory\MusicStoreInventory\obj\Debug\MusicStoreInventory.pdb
 C:\Users\hayle\Source\Repos\Music-Store-Inventory\MusicStoreInventory\MusicStoreInventory\obj\Debug\MusicStoreInventory.CustomerDataForm.resources
+C:\Users\hayle\source\repos\Music-Store-Inventory\SampleUI\MusicStoreInventory\bin\Debug\Instrument Database.mdb.mdf
+C:\Users\hayle\source\repos\Music-Store-Inventory\SampleUI\MusicStoreInventory\bin\Debug\Instrument Database.mdb_log.ldf
+C:\Users\hayle\source\repos\Music-Store-Inventory\SampleUI\MusicStoreInventory\bin\Debug\MusicStoreInventory.exe.config
+C:\Users\hayle\source\repos\Music-Store-Inventory\SampleUI\MusicStoreInventory\bin\Debug\MusicStoreInventory.exe
+C:\Users\hayle\source\repos\Music-Store-Inventory\SampleUI\MusicStoreInventory\bin\Debug\MusicStoreInventory.pdb
+C:\Users\hayle\source\repos\Music-Store-Inventory\SampleUI\MusicStoreInventory\obj\Debug\MusicStoreInventory.csproj.AssemblyReference.cache
+C:\Users\hayle\source\repos\Music-Store-Inventory\SampleUI\MusicStoreInventory\obj\Debug\MusicStoreInventory.csproj.SuggestedBindingRedirects.cache
+C:\Users\hayle\source\repos\Music-Store-Inventory\SampleUI\MusicStoreInventory\obj\Debug\MusicStoreInventory.CustomerDataForm.resources
+C:\Users\hayle\source\repos\Music-Store-Inventory\SampleUI\MusicStoreInventory\obj\Debug\MusicStoreInventory.FormMain.resources
+C:\Users\hayle\source\repos\Music-Store-Inventory\SampleUI\MusicStoreInventory\obj\Debug\MusicStoreInventory.Properties.Resources.resources
+C:\Users\hayle\source\repos\Music-Store-Inventory\SampleUI\MusicStoreInventory\obj\Debug\MusicStoreInventory.csproj.GenerateResource.cache
+C:\Users\hayle\source\repos\Music-Store-Inventory\SampleUI\MusicStoreInventory\obj\Debug\MusicStoreInventory.csproj.CoreCompileInputs.cache
+C:\Users\hayle\source\repos\Music-Store-Inventory\SampleUI\MusicStoreInventory\obj\Debug\MusicStoreInventory.exe
+C:\Users\hayle\source\repos\Music-Store-Inventory\SampleUI\MusicStoreInventory\obj\Debug\MusicStoreInventory.pdb
