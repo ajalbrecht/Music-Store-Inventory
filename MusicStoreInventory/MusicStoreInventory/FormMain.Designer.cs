@@ -33,6 +33,7 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.gBxSearchCriteria = new System.Windows.Forms.GroupBox();
+            this.rBtSearch8 = new System.Windows.Forms.RadioButton();
             this.btnExit = new System.Windows.Forms.Button();
             this.rBtSearch4 = new System.Windows.Forms.RadioButton();
             this.rBtSearch6 = new System.Windows.Forms.RadioButton();
@@ -50,25 +51,24 @@
             this.rBtTableTransactions = new System.Windows.Forms.RadioButton();
             this.rBtTableCustomers = new System.Windows.Forms.RadioButton();
             this.rBtTableInstruments = new System.Windows.Forms.RadioButton();
-            this.gBxCustomerInfo = new System.Windows.Forms.GroupBox();
-            this.gBxInstrumentInfo = new System.Windows.Forms.GroupBox();
-            this.lblCustomerID = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblAddress = new System.Windows.Forms.Label();
-            this.txtPaymentInfo = new System.Windows.Forms.TextBox();
-            this.lblPamentInfo = new System.Windows.Forms.Label();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.txtCustomerID = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.gBxTransactionInfo = new System.Windows.Forms.GroupBox();
-            this.rBtSearch8 = new System.Windows.Forms.RadioButton();
+            this.gBxRowInfo = new System.Windows.Forms.GroupBox();
+            this.lblInfo1 = new System.Windows.Forms.Label();
+            this.lblInfo2 = new System.Windows.Forms.Label();
+            this.lblInfo3 = new System.Windows.Forms.Label();
+            this.txtInfo4 = new System.Windows.Forms.TextBox();
+            this.lblInfo4 = new System.Windows.Forms.Label();
+            this.txtInfo3 = new System.Windows.Forms.TextBox();
+            this.txtInfo1 = new System.Windows.Forms.TextBox();
+            this.txtInfo2 = new System.Windows.Forms.TextBox();
+            this.btnInfoEnter = new System.Windows.Forms.Button();
+            this.txtInfo5 = new System.Windows.Forms.TextBox();
+            this.lblInfo5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.instrument_DatabaseDataSet)).BeginInit();
             this.gBxSearchCriteria.SuspendLayout();
             this.gBxAdEdDe.SuspendLayout();
             this.gBxSelectTable.SuspendLayout();
-            this.gBxCustomerInfo.SuspendLayout();
-            this.gBxInstrumentInfo.SuspendLayout();
+            this.gBxRowInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvMain
@@ -123,6 +123,16 @@
             this.gBxSearchCriteria.TabIndex = 10;
             this.gBxSearchCriteria.TabStop = false;
             this.gBxSearchCriteria.Text = "Search:";
+            // 
+            // rBtSearch8
+            // 
+            this.rBtSearch8.AutoSize = true;
+            this.rBtSearch8.Location = new System.Drawing.Point(254, 86);
+            this.rBtSearch8.Name = "rBtSearch8";
+            this.rBtSearch8.Size = new System.Drawing.Size(78, 17);
+            this.rBtSearch8.TabIndex = 12;
+            this.rBtSearch8.Text = "rBtSearch8";
+            this.rBtSearch8.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
@@ -305,138 +315,144 @@
             this.rBtTableInstruments.UseVisualStyleBackColor = true;
             this.rBtTableInstruments.Click += new System.EventHandler(this.RBtsTableSelect_Click);
             // 
-            // gBxCustomerInfo
+            // gBxRowInfo
             // 
-            this.gBxCustomerInfo.Controls.Add(this.lblCustomerID);
-            this.gBxCustomerInfo.Controls.Add(this.lblName);
-            this.gBxCustomerInfo.Controls.Add(this.lblAddress);
-            this.gBxCustomerInfo.Controls.Add(this.txtPaymentInfo);
-            this.gBxCustomerInfo.Controls.Add(this.lblPamentInfo);
-            this.gBxCustomerInfo.Controls.Add(this.txtAddress);
-            this.gBxCustomerInfo.Controls.Add(this.txtCustomerID);
-            this.gBxCustomerInfo.Controls.Add(this.txtName);
-            this.gBxCustomerInfo.Location = new System.Drawing.Point(546, 12);
-            this.gBxCustomerInfo.Name = "gBxCustomerInfo";
-            this.gBxCustomerInfo.Size = new System.Drawing.Size(209, 411);
-            this.gBxCustomerInfo.TabIndex = 23;
-            this.gBxCustomerInfo.TabStop = false;
-            this.gBxCustomerInfo.Text = "Customer Info";
+            this.gBxRowInfo.Controls.Add(this.txtInfo5);
+            this.gBxRowInfo.Controls.Add(this.lblInfo5);
+            this.gBxRowInfo.Controls.Add(this.btnInfoEnter);
+            this.gBxRowInfo.Controls.Add(this.lblInfo1);
+            this.gBxRowInfo.Controls.Add(this.lblInfo2);
+            this.gBxRowInfo.Controls.Add(this.lblInfo3);
+            this.gBxRowInfo.Controls.Add(this.txtInfo4);
+            this.gBxRowInfo.Controls.Add(this.lblInfo4);
+            this.gBxRowInfo.Controls.Add(this.txtInfo3);
+            this.gBxRowInfo.Controls.Add(this.txtInfo1);
+            this.gBxRowInfo.Controls.Add(this.txtInfo2);
+            this.gBxRowInfo.Location = new System.Drawing.Point(546, 12);
+            this.gBxRowInfo.Name = "gBxRowInfo";
+            this.gBxRowInfo.Size = new System.Drawing.Size(209, 411);
+            this.gBxRowInfo.TabIndex = 23;
+            this.gBxRowInfo.TabStop = false;
+            this.gBxRowInfo.Text = "gBxRowInfo";
             // 
-            // gBxInstrumentInfo
+            // lblInfo1
             // 
-            this.gBxInstrumentInfo.Controls.Add(this.gBxTransactionInfo);
-            this.gBxInstrumentInfo.Location = new System.Drawing.Point(546, 185);
-            this.gBxInstrumentInfo.Name = "gBxInstrumentInfo";
-            this.gBxInstrumentInfo.Size = new System.Drawing.Size(209, 411);
-            this.gBxInstrumentInfo.TabIndex = 24;
-            this.gBxInstrumentInfo.TabStop = false;
-            this.gBxInstrumentInfo.Text = "Instrument Info";
+            this.lblInfo1.AutoSize = true;
+            this.lblInfo1.Location = new System.Drawing.Point(10, 21);
+            this.lblInfo1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblInfo1.Name = "lblInfo1";
+            this.lblInfo1.Size = new System.Drawing.Size(41, 13);
+            this.lblInfo1.TabIndex = 12;
+            this.lblInfo1.Text = "lblInfo1";
             // 
-            // lblCustomerID
+            // lblInfo2
             // 
-            this.lblCustomerID.AutoSize = true;
-            this.lblCustomerID.Location = new System.Drawing.Point(10, 16);
-            this.lblCustomerID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCustomerID.Name = "lblCustomerID";
-            this.lblCustomerID.Size = new System.Drawing.Size(65, 13);
-            this.lblCustomerID.TabIndex = 12;
-            this.lblCustomerID.Text = "Customer ID";
+            this.lblInfo2.AutoSize = true;
+            this.lblInfo2.Location = new System.Drawing.Point(10, 61);
+            this.lblInfo2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblInfo2.Name = "lblInfo2";
+            this.lblInfo2.Size = new System.Drawing.Size(41, 13);
+            this.lblInfo2.TabIndex = 13;
+            this.lblInfo2.Text = "lblInfo2";
             // 
-            // lblName
+            // lblInfo3
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(10, 61);
-            this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(35, 13);
-            this.lblName.TabIndex = 13;
-            this.lblName.Text = "Name";
+            this.lblInfo3.AutoSize = true;
+            this.lblInfo3.Location = new System.Drawing.Point(10, 105);
+            this.lblInfo3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblInfo3.Name = "lblInfo3";
+            this.lblInfo3.Size = new System.Drawing.Size(41, 13);
+            this.lblInfo3.TabIndex = 14;
+            this.lblInfo3.Text = "lblInfo3";
             // 
-            // lblAddress
+            // txtInfo4
             // 
-            this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(10, 105);
-            this.lblAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(45, 13);
-            this.lblAddress.TabIndex = 14;
-            this.lblAddress.Text = "Address";
+            this.txtInfo4.Location = new System.Drawing.Point(108, 148);
+            this.txtInfo4.Margin = new System.Windows.Forms.Padding(2);
+            this.txtInfo4.Name = "txtInfo4";
+            this.txtInfo4.Size = new System.Drawing.Size(76, 20);
+            this.txtInfo4.TabIndex = 19;
+            this.txtInfo4.Text = "txtInfo4";
             // 
-            // txtPaymentInfo
+            // lblInfo4
             // 
-            this.txtPaymentInfo.Location = new System.Drawing.Point(108, 148);
-            this.txtPaymentInfo.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPaymentInfo.Name = "txtPaymentInfo";
-            this.txtPaymentInfo.Size = new System.Drawing.Size(76, 20);
-            this.txtPaymentInfo.TabIndex = 19;
+            this.lblInfo4.AutoSize = true;
+            this.lblInfo4.Location = new System.Drawing.Point(10, 150);
+            this.lblInfo4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblInfo4.Name = "lblInfo4";
+            this.lblInfo4.Size = new System.Drawing.Size(41, 13);
+            this.lblInfo4.TabIndex = 15;
+            this.lblInfo4.Text = "lblInfo4";
             // 
-            // lblPamentInfo
+            // txtInfo3
             // 
-            this.lblPamentInfo.AutoSize = true;
-            this.lblPamentInfo.Location = new System.Drawing.Point(10, 150);
-            this.lblPamentInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPamentInfo.Name = "lblPamentInfo";
-            this.lblPamentInfo.Size = new System.Drawing.Size(69, 13);
-            this.lblPamentInfo.TabIndex = 15;
-            this.lblPamentInfo.Text = "Payment Info";
+            this.txtInfo3.Location = new System.Drawing.Point(108, 103);
+            this.txtInfo3.Margin = new System.Windows.Forms.Padding(2);
+            this.txtInfo3.Name = "txtInfo3";
+            this.txtInfo3.Size = new System.Drawing.Size(76, 20);
+            this.txtInfo3.TabIndex = 18;
+            this.txtInfo3.Text = "txtInfo3";
             // 
-            // txtAddress
+            // txtInfo1
             // 
-            this.txtAddress.Location = new System.Drawing.Point(108, 103);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(2);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(76, 20);
-            this.txtAddress.TabIndex = 18;
+            this.txtInfo1.Location = new System.Drawing.Point(108, 18);
+            this.txtInfo1.Margin = new System.Windows.Forms.Padding(2);
+            this.txtInfo1.Name = "txtInfo1";
+            this.txtInfo1.Size = new System.Drawing.Size(76, 20);
+            this.txtInfo1.TabIndex = 16;
+            this.txtInfo1.Text = "txtInfo1";
             // 
-            // txtCustomerID
+            // txtInfo2
             // 
-            this.txtCustomerID.Location = new System.Drawing.Point(108, 16);
-            this.txtCustomerID.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCustomerID.Name = "txtCustomerID";
-            this.txtCustomerID.Size = new System.Drawing.Size(76, 20);
-            this.txtCustomerID.TabIndex = 16;
+            this.txtInfo2.Location = new System.Drawing.Point(108, 61);
+            this.txtInfo2.Margin = new System.Windows.Forms.Padding(2);
+            this.txtInfo2.Name = "txtInfo2";
+            this.txtInfo2.Size = new System.Drawing.Size(76, 20);
+            this.txtInfo2.TabIndex = 17;
+            this.txtInfo2.Text = "txtInfo2";
             // 
-            // txtName
+            // btnInfoEnter
             // 
-            this.txtName.Location = new System.Drawing.Point(108, 61);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(76, 20);
-            this.txtName.TabIndex = 17;
+            this.btnInfoEnter.Location = new System.Drawing.Point(13, 360);
+            this.btnInfoEnter.Name = "btnInfoEnter";
+            this.btnInfoEnter.Size = new System.Drawing.Size(179, 35);
+            this.btnInfoEnter.TabIndex = 20;
+            this.btnInfoEnter.Text = "btnInfoEnter";
+            this.btnInfoEnter.UseVisualStyleBackColor = true;
+            this.btnInfoEnter.Click += new System.EventHandler(this.BtnInfoEnter_Click);
             // 
-            // gBxTransactionInfo
+            // txtInfo5
             // 
-            this.gBxTransactionInfo.Location = new System.Drawing.Point(0, 44);
-            this.gBxTransactionInfo.Name = "gBxTransactionInfo";
-            this.gBxTransactionInfo.Size = new System.Drawing.Size(209, 411);
-            this.gBxTransactionInfo.TabIndex = 25;
-            this.gBxTransactionInfo.TabStop = false;
-            this.gBxTransactionInfo.Text = "Transaction Info";
+            this.txtInfo5.Location = new System.Drawing.Point(108, 185);
+            this.txtInfo5.Margin = new System.Windows.Forms.Padding(2);
+            this.txtInfo5.Name = "txtInfo5";
+            this.txtInfo5.Size = new System.Drawing.Size(76, 20);
+            this.txtInfo5.TabIndex = 22;
+            this.txtInfo5.Text = "txtInfo5";
             // 
-            // rBtSearch8
+            // lblInfo5
             // 
-            this.rBtSearch8.AutoSize = true;
-            this.rBtSearch8.Location = new System.Drawing.Point(254, 86);
-            this.rBtSearch8.Name = "rBtSearch8";
-            this.rBtSearch8.Size = new System.Drawing.Size(78, 17);
-            this.rBtSearch8.TabIndex = 12;
-            this.rBtSearch8.Text = "rBtSearch8";
-            this.rBtSearch8.UseVisualStyleBackColor = true;
+            this.lblInfo5.AutoSize = true;
+            this.lblInfo5.Location = new System.Drawing.Point(10, 187);
+            this.lblInfo5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblInfo5.Name = "lblInfo5";
+            this.lblInfo5.Size = new System.Drawing.Size(41, 13);
+            this.lblInfo5.TabIndex = 21;
+            this.lblInfo5.Text = "lblInfo5";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(767, 436);
-            this.Controls.Add(this.gBxInstrumentInfo);
-            this.Controls.Add(this.gBxCustomerInfo);
+            this.Controls.Add(this.gBxRowInfo);
             this.Controls.Add(this.gBxSelectTable);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.gBxAdEdDe);
             this.Controls.Add(this.gBxSearchCriteria);
             this.Controls.Add(this.dgvMain);
             this.Name = "FormMain";
-            this.Text = "Database Manager v1.6";
+            this.Text = "Database Manager v1.7";
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.instrument_DatabaseDataSet)).EndInit();
@@ -445,9 +461,8 @@
             this.gBxAdEdDe.ResumeLayout(false);
             this.gBxSelectTable.ResumeLayout(false);
             this.gBxSelectTable.PerformLayout();
-            this.gBxCustomerInfo.ResumeLayout(false);
-            this.gBxCustomerInfo.PerformLayout();
-            this.gBxInstrumentInfo.ResumeLayout(false);
+            this.gBxRowInfo.ResumeLayout(false);
+            this.gBxRowInfo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -476,18 +491,19 @@
         private System.Windows.Forms.RadioButton rBtTableTransactions;
         private System.Windows.Forms.RadioButton rBtTableCustomers;
         private System.Windows.Forms.RadioButton rBtTableInstruments;
-        private System.Windows.Forms.GroupBox gBxCustomerInfo;
-        private System.Windows.Forms.Label lblCustomerID;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblAddress;
-        private System.Windows.Forms.TextBox txtPaymentInfo;
-        private System.Windows.Forms.Label lblPamentInfo;
-        private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.TextBox txtCustomerID;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.GroupBox gBxInstrumentInfo;
-        private System.Windows.Forms.GroupBox gBxTransactionInfo;
+        private System.Windows.Forms.GroupBox gBxRowInfo;
+        private System.Windows.Forms.Label lblInfo1;
+        private System.Windows.Forms.Label lblInfo2;
+        private System.Windows.Forms.Label lblInfo3;
+        private System.Windows.Forms.TextBox txtInfo4;
+        private System.Windows.Forms.Label lblInfo4;
+        private System.Windows.Forms.TextBox txtInfo3;
+        private System.Windows.Forms.TextBox txtInfo1;
+        private System.Windows.Forms.TextBox txtInfo2;
         private System.Windows.Forms.RadioButton rBtSearch8;
+        private System.Windows.Forms.Button btnInfoEnter;
+        private System.Windows.Forms.TextBox txtInfo5;
+        private System.Windows.Forms.Label lblInfo5;
     }
 }
 

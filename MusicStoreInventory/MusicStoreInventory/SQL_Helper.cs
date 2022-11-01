@@ -9,7 +9,10 @@ namespace MusicStoreInventory
 {
     class SQL_Helper
     {
+        // Variables
         private OleDbConnection myConnection;
+
+
 
         // Default Constructor
         public SQL_Helper()
@@ -23,12 +26,9 @@ namespace MusicStoreInventory
             myConnection = new OleDbConnection(connectionString);
         }
 
-        public string show()
-        {
 
-            return myConnection.Database.GetType().ToString();
-        }
 
+        // Methods
         public void search(string table, string column, string searchTerm)
         {
             myConnection.Open();
@@ -38,10 +38,10 @@ namespace MusicStoreInventory
             {
                 myCommand.ExecuteNonQuery();
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
                 myConnection.Close();
-                throw exc;
+                throw ex;
             }
 
             myConnection.Close();
@@ -53,21 +53,21 @@ namespace MusicStoreInventory
 
             OleDbCommand myCommand;
             if (table == "Instrument")
-                myCommand = new OleDbCommand("Insert into Instrument ([ID],[Customer_Name],[Address],[Payment_Info]) " +
-                    "values('"
-                    + in1 + "','"
-                    + in2 + "','"
-                    + in3 + "','"
-                    + in4 + "')", myConnection);
-            else if (table == "Customer")
-                myCommand = new OleDbCommand("Insert into Customer ([ID],[Price],[Instrument_Name],[Make],[Size],[Quality]) " +
-                    "values('"
+                myCommand = new OleDbCommand("INSERT INTO INSTRUMENT ([ID],[Price],[Instrument_Name],[Make],[Size],[Quality]) " +
+                    "VALUES('"
                     + in1 + "','"
                     + in2 + "','"
                     + in3 + "','"
                     + in4 + "','"
                     + in5 + "','"
                     + in6 + "')", myConnection);
+            else if (table == "Customer")
+                myCommand = new OleDbCommand("INSERT INTO CUSTOMER ([ID],[Customer_Name],[Address],[Payment_Info]) " +
+                    "VALUES('"
+                    + in1 + "','"
+                    + in2 + "','"
+                    + in3 + "','"
+                    + in4 + "')", myConnection);
             else
                 throw new Exception("Table '" + table + "' not Found");            
 
@@ -75,19 +75,19 @@ namespace MusicStoreInventory
             {
                 myCommand.ExecuteNonQuery();
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
                 myConnection.Close();
-                throw exc;
+                throw ex;
             }
 
             myConnection.Close();
         }
 
-        public void update(string name, string address, string payment)
+        public void edit(string name, string address, string payment)
         {
             myConnection.Open();
-            OleDbCommand myCommand = new OleDbCommand("Update Customer set " +
+            OleDbCommand myCommand = new OleDbCommand("UPDATE CUSTOMER SET " +
                 "Customer_Name='" + name +
                 "Address='" + address +
                 "'Payment_Info='" + payment, myConnection);
@@ -96,10 +96,10 @@ namespace MusicStoreInventory
             {
                 myCommand.ExecuteNonQuery();
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
                 myConnection.Close();
-                throw exc;
+                throw ex;
             }
 
                 myConnection.Close();
@@ -108,16 +108,16 @@ namespace MusicStoreInventory
         public void delete(string table, string ID)
         {
             myConnection.Open();
-            OleDbCommand myCommand = new OleDbCommand("Delete from " + table + " where ID = " + ID, myConnection);
+            OleDbCommand myCommand = new OleDbCommand("DELETE FROM " + table + " WHERE ID = " + ID, myConnection);
 
             try
             {
                 myCommand.ExecuteNonQuery();
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
                 myConnection.Close();
-                throw exc;
+                throw ex;
             }
 
             myConnection.Close();
