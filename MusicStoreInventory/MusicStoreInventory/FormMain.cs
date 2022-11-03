@@ -15,6 +15,10 @@ namespace MusicStoreInventory
     {
         // Variables
         private SQL_Helper data;
+        enum TableStates { DEFAULT, INSTRUMENTS, CUSTOMERS, TRANSACTIONS };
+        private TableStates lastTable;
+        enum infoBoxState { DEFAULT, ADD, EDIT, DELETE}
+        private bool editValid = false;
 
 
 
@@ -31,7 +35,7 @@ namespace MusicStoreInventory
         {
             data = new SQL_Helper("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\"|DataDirectory|\\Instrument Database.mdb\"");
             btnInfoEnter.Text = "Enter";
-            refreshForm();
+            RBtTableInstruments_Click(new Button(), new MouseEventArgs(MouseButtons.Left, 0, 0, 0, 0));
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
@@ -41,19 +45,19 @@ namespace MusicStoreInventory
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-            if (validateDataInput(txtSearch.Text))
-                try
-                {
-                    data.search("Customer", "Customer_Name", txtSearch.Text);
-                    refreshForm();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                    throw;
-                }
-            else
-                MessageBox.Show("Error: Wrong Data Type Entered");
+            //if (validateDataInput(txtSearch.Text))
+            //    try
+            //    {
+            //        data.search("Customer", "Customer_Name", txtSearch.Text);
+            //        refreshForm();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show("Error: " + ex.Message);
+            //        throw;
+            //    }
+            //else
+            //    MessageBox.Show("Error: Wrong Data Type Entered");
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -71,16 +75,15 @@ namespace MusicStoreInventory
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            int row;
             try
             {
-                int.TryParse(dgvMain.SelectedCells[0].OwningRow.Index.ToString(), out row);
-                fillInfoForm(row);
+                //data.edit("11", "Dude", "321", "4321");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+            refreshForm();
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
@@ -96,57 +99,98 @@ namespace MusicStoreInventory
             refreshForm();
         }
 
-        private void RBtsTableSelect_Click(object sender, EventArgs e)
-        {
-            refreshForm();
-        }
-
         private void BtnInfoEnter_Click(object sender, EventArgs e)
         {
-
+            data.edit(lblID.Text, txtInfo1.Text, txtInfo2.Text, txtInfo3.Text);//, txtInfo4.Text, txtInfo5);
         }
 
         private void BtnTest_Click(object sender, EventArgs e)
         {
-            
+
         }
+
+        private void RBtTableInstruments_Click(object sender, EventArgs e)
+        {
+            if (lastTable == TableStates.INSTRUMENTS)
+                return;
+
+            txtInfo1.Text = txtInfo2.Text = txtInfo3.Text = txtInfo4.Text = txtInfo5.Text = "";
+            gBxRowInfo.Text = "Instrument Info:";
+            rBtSearch1.Text = lblInfo1.Text = "Name";
+            rBtSearch2.Text = lblInfo2.Text = "Make";
+            rBtSearch3.Text = lblInfo3.Text = "Size";
+            rBtSearch4.Text = lblInfo4.Text = "Price";
+            rBtSearch5.Text = lblInfo5.Text = "Quality";
+
+            rBtSearch6.Visible = false;
+            rBtSearch7.Visible = false;
+            rBtSearch8.Visible = false;
+
+            lastTable = TableStates.INSTRUMENTS;
+            refreshForm();
+        }
+
+        private void RBtTableCustomers_Click(object sender, EventArgs e)
+        {
+            if (lastTable == TableStates.CUSTOMERS)
+                return;
+
+            txtInfo1.Text = txtInfo2.Text = txtInfo3.Text = txtInfo4.Text = txtInfo5.Text = "";
+            gBxRowInfo.Text = "Customer Info:";
+            rBtSearch1.Text = lblInfo1.Text = "Name";
+            rBtSearch2.Text = lblInfo2.Text = "City";
+            rBtSearch3.Text = lblInfo3.Text = "State";
+            rBtSearch4.Text = lblInfo4.Text = "Address";
+            rBtSearch5.Text = lblInfo5.Text = "Zip Code";
+
+            rBtSearch6.Visible = false;
+            rBtSearch7.Visible = false;
+            rBtSearch8.Visible = false;
+
+            lastTable = TableStates.CUSTOMERS;
+            refreshForm();
+        }
+
+        private void RBtTableTransactions_Click(object sender, EventArgs e)
+        {
+            if (lastTable == TableStates.TRANSACTIONS)
+                return;
+
+            txtInfo1.Text = txtInfo2.Text = txtInfo3.Text = txtInfo4.Text = txtInfo5.Text = "";
+
+            txtInfo1.Text = txtInfo2.Text = txtInfo3.Text = txtInfo4.Text = txtInfo5.Text = "";
+            gBxRowInfo.Text = "Transaction Info:";
+            rBtSearch1.Text = lblInfo1.Text = "Instrument";
+            rBtSearch2.Text = lblInfo2.Text = "Name";
+            rBtSearch3.Text = lblInfo3.Text = "Num 3";
+            rBtSearch4.Text = lblInfo4.Text = "Num 4";
+            rBtSearch5.Text = lblInfo5.Text = "Num 5";
+
+            rBtSearch6.Visible = false;
+            rBtSearch7.Visible = false;
+            rBtSearch8.Visible = false;
+
+            lastTable = TableStates.TRANSACTIONS;
+            refreshForm();
+        }
+
+
+
+        
 
 
 
         // FormMain Methods
         private void refreshForm()
         {
-            txtInfo1.Text = txtInfo2.Text = txtInfo3.Text = txtInfo4.Text = txtInfo5.Text = "";
             if (rBtTableInstruments.Checked)
             {
-                gBxRowInfo.Text = "Instrument Info:";
-                rBtSearch1.Text = lblInfo1.Text = "Name";
-                rBtSearch2.Text = lblInfo2.Text = "Make";
-                rBtSearch3.Text = lblInfo3.Text = "Size";
-                rBtSearch4.Text = lblInfo4.Text = "Price";
-                rBtSearch5.Text = lblInfo5.Text = "Quality";
-
-                rBtSearch6.Visible = false;
-                rBtSearch7.Visible = false;
-                rBtSearch8.Visible = false;
-
                 InstrumentTableAdapter adapter = new InstrumentTableAdapter();
                 dgvMain.DataSource = instrument_DatabaseDataSet.Instrument;
                 adapter.Fill(this.instrument_DatabaseDataSet.Instrument);
             }
             else if (rBtTableCustomers.Checked)
             {
-                gBxRowInfo.Text = "Customer Info:";
-                rBtSearch1.Text = lblInfo1.Text = "Name";
-                rBtSearch2.Text = lblInfo2.Text = "City";
-                rBtSearch3.Text = lblInfo3.Text = "State";
-                rBtSearch4.Text = lblInfo4.Text = "Address";
-                rBtSearch5.Text = lblInfo5.Text = "Zip Code";
-
-                rBtSearch6.Visible = false;
-                rBtSearch7.Visible = false;
-                rBtSearch8.Visible = false;
-
                 CustomerTableAdapter adapter = new CustomerTableAdapter();
                 dgvMain.DataSource = instrument_DatabaseDataSet.Customer;
                 adapter.Fill(this.instrument_DatabaseDataSet.Customer);
@@ -179,6 +223,7 @@ namespace MusicStoreInventory
                     txtInfo3.Text = dgvMain.Rows[row].Cells[3].Value.ToString();
                     txtInfo2.Text = dgvMain.Rows[row].Cells[2].Value.ToString();
                     txtInfo1.Text = dgvMain.Rows[row].Cells[1].Value.ToString();
+                    lblID.Text = dgvMain.Rows[row].Cells[0].Value.ToString();
                     break;
                 default:
                     break;
@@ -214,10 +259,23 @@ namespace MusicStoreInventory
             }
         }
 
-        private bool validateDataInput(string input)
+        private bool validateDataInput()
         {
+            if (rBtTableInstruments.Checked)
+            {
+                double number;
+                return double.TryParse(txtInfo4.Text, out number);
+            }
+            else if (rBtTableCustomers.Checked)
+            {
+                int number;
+                return int.TryParse(txtInfo5.Text, out number);
+            }
+            else
+            {
 
-            return false;
+                return true;
+            }
         }
     }
 }
