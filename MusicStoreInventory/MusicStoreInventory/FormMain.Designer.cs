@@ -52,6 +52,8 @@
             this.rBtTableCustomers = new System.Windows.Forms.RadioButton();
             this.rBtTableInstruments = new System.Windows.Forms.RadioButton();
             this.gBxRowInfo = new System.Windows.Forms.GroupBox();
+            this.lblID = new System.Windows.Forms.Label();
+            this.lblPK = new System.Windows.Forms.Label();
             this.txtInfo5 = new System.Windows.Forms.TextBox();
             this.lblInfo5 = new System.Windows.Forms.Label();
             this.btnInfoEnter = new System.Windows.Forms.Button();
@@ -63,8 +65,6 @@
             this.txtInfo3 = new System.Windows.Forms.TextBox();
             this.txtInfo1 = new System.Windows.Forms.TextBox();
             this.txtInfo2 = new System.Windows.Forms.TextBox();
-            this.lblPK = new System.Windows.Forms.Label();
-            this.lblID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.instrument_DatabaseDataSet)).BeginInit();
             this.gBxSearchCriteria.SuspendLayout();
@@ -83,6 +83,7 @@
             this.dgvMain.ReadOnly = true;
             this.dgvMain.Size = new System.Drawing.Size(528, 239);
             this.dgvMain.TabIndex = 9;
+            this.dgvMain.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvMain_CellClick);
             // 
             // instrument_DatabaseDataSet
             // 
@@ -339,9 +340,28 @@
             this.gBxRowInfo.TabStop = false;
             this.gBxRowInfo.Text = "gBxRowInfo";
             // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(105, 21);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(28, 13);
+            this.lblID.TabIndex = 24;
+            this.lblID.Text = "lblID";
+            // 
+            // lblPK
+            // 
+            this.lblPK.AutoSize = true;
+            this.lblPK.Location = new System.Drawing.Point(10, 23);
+            this.lblPK.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPK.Name = "lblPK";
+            this.lblPK.Size = new System.Drawing.Size(65, 13);
+            this.lblPK.TabIndex = 23;
+            this.lblPK.Text = "Primary Key:";
+            // 
             // txtInfo5
             // 
-            this.txtInfo5.Location = new System.Drawing.Point(108, 216);
+            this.txtInfo5.Location = new System.Drawing.Point(108, 219);
             this.txtInfo5.Margin = new System.Windows.Forms.Padding(2);
             this.txtInfo5.Name = "txtInfo5";
             this.txtInfo5.Size = new System.Drawing.Size(76, 20);
@@ -351,7 +371,7 @@
             // lblInfo5
             // 
             this.lblInfo5.AutoSize = true;
-            this.lblInfo5.Location = new System.Drawing.Point(10, 218);
+            this.lblInfo5.Location = new System.Drawing.Point(10, 221);
             this.lblInfo5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInfo5.Name = "lblInfo5";
             this.lblInfo5.Size = new System.Drawing.Size(41, 13);
@@ -371,7 +391,7 @@
             // lblInfo1
             // 
             this.lblInfo1.AutoSize = true;
-            this.lblInfo1.Location = new System.Drawing.Point(10, 52);
+            this.lblInfo1.Location = new System.Drawing.Point(10, 55);
             this.lblInfo1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInfo1.Name = "lblInfo1";
             this.lblInfo1.Size = new System.Drawing.Size(41, 13);
@@ -381,7 +401,7 @@
             // lblInfo2
             // 
             this.lblInfo2.AutoSize = true;
-            this.lblInfo2.Location = new System.Drawing.Point(10, 92);
+            this.lblInfo2.Location = new System.Drawing.Point(10, 95);
             this.lblInfo2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInfo2.Name = "lblInfo2";
             this.lblInfo2.Size = new System.Drawing.Size(41, 13);
@@ -391,7 +411,7 @@
             // lblInfo3
             // 
             this.lblInfo3.AutoSize = true;
-            this.lblInfo3.Location = new System.Drawing.Point(10, 136);
+            this.lblInfo3.Location = new System.Drawing.Point(10, 139);
             this.lblInfo3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInfo3.Name = "lblInfo3";
             this.lblInfo3.Size = new System.Drawing.Size(41, 13);
@@ -400,7 +420,7 @@
             // 
             // txtInfo4
             // 
-            this.txtInfo4.Location = new System.Drawing.Point(108, 179);
+            this.txtInfo4.Location = new System.Drawing.Point(108, 182);
             this.txtInfo4.Margin = new System.Windows.Forms.Padding(2);
             this.txtInfo4.Name = "txtInfo4";
             this.txtInfo4.Size = new System.Drawing.Size(76, 20);
@@ -410,7 +430,7 @@
             // lblInfo4
             // 
             this.lblInfo4.AutoSize = true;
-            this.lblInfo4.Location = new System.Drawing.Point(10, 181);
+            this.lblInfo4.Location = new System.Drawing.Point(10, 184);
             this.lblInfo4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInfo4.Name = "lblInfo4";
             this.lblInfo4.Size = new System.Drawing.Size(41, 13);
@@ -419,7 +439,7 @@
             // 
             // txtInfo3
             // 
-            this.txtInfo3.Location = new System.Drawing.Point(108, 134);
+            this.txtInfo3.Location = new System.Drawing.Point(108, 137);
             this.txtInfo3.Margin = new System.Windows.Forms.Padding(2);
             this.txtInfo3.Name = "txtInfo3";
             this.txtInfo3.Size = new System.Drawing.Size(76, 20);
@@ -428,7 +448,7 @@
             // 
             // txtInfo1
             // 
-            this.txtInfo1.Location = new System.Drawing.Point(108, 49);
+            this.txtInfo1.Location = new System.Drawing.Point(108, 52);
             this.txtInfo1.Margin = new System.Windows.Forms.Padding(2);
             this.txtInfo1.Name = "txtInfo1";
             this.txtInfo1.Size = new System.Drawing.Size(76, 20);
@@ -437,32 +457,12 @@
             // 
             // txtInfo2
             // 
-            this.txtInfo2.Location = new System.Drawing.Point(108, 92);
+            this.txtInfo2.Location = new System.Drawing.Point(108, 95);
             this.txtInfo2.Margin = new System.Windows.Forms.Padding(2);
             this.txtInfo2.Name = "txtInfo2";
             this.txtInfo2.Size = new System.Drawing.Size(76, 20);
             this.txtInfo2.TabIndex = 17;
             this.txtInfo2.Text = "txtInfo2";
-            // 
-            // lblPK
-            // 
-            this.lblPK.AutoSize = true;
-            this.lblPK.Location = new System.Drawing.Point(10, 23);
-            this.lblPK.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPK.Name = "lblPK";
-            this.lblPK.Size = new System.Drawing.Size(65, 13);
-            this.lblPK.TabIndex = 23;
-            this.lblPK.Text = "Primary Key:";
-            // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(105, 23);
-            this.lblID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(28, 13);
-            this.lblID.TabIndex = 24;
-            this.lblID.Text = "lblID";
             // 
             // FormMain
             // 
@@ -476,7 +476,7 @@
             this.Controls.Add(this.gBxSearchCriteria);
             this.Controls.Add(this.dgvMain);
             this.Name = "FormMain";
-            this.Text = "Database Manager v1.7";
+            this.Text = "Database Manager v1.9";
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.instrument_DatabaseDataSet)).EndInit();

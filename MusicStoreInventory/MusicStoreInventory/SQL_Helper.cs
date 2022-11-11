@@ -76,8 +76,8 @@ namespace MusicStoreInventory
             myConnection.Open();
 
             OleDbCommand myCommand;
-            if (table == "Instrument")
-                myCommand = new OleDbCommand("INSERT INTO INSTRUMENT ([ID],[Price],[Instrument_Name],[Make],[Size],[Quality]) " +
+            if (table == "Instruments")
+                myCommand = new OleDbCommand("INSERT INTO Instruments ([ID],[Instrument_Name],[Price],[Make],[Size],[Quality]) " +
                     "VALUES('"
                     + check(in1) + "','"
                     + check(in2) + "','"
@@ -85,13 +85,24 @@ namespace MusicStoreInventory
                     + check(in4) + "','"
                     + check(in5) + "','"
                     + check(in6) + "')", myConnection);
-            else if (table == "Customer")
-                myCommand = new OleDbCommand("INSERT INTO CUSTOMER ([ID],[Customer_Name],[Address],[Payment_Info]) " +
+            else if (table == "Customers")
+                myCommand = new OleDbCommand("INSERT INTO Customers ([ID],[Customer_Name],[City],[State],[Address],[Zip_Code]) " +
                     "VALUES('"
                     + check(in1) + "','"
                     + check(in2) + "','"
                     + check(in3) + "','"
-                    + check(in4) + "')", myConnection);
+                    + check(in4) + "','"
+                    + check(in5) + "','"
+                    + check(in6) + "')", myConnection);
+            else if (table == "Transactions")
+                myCommand = new OleDbCommand("INSERT INTO Transactions ([ID],[Customer],[Instrument],[Sale_Price],[Listed_Price],[Payment_Type]) " +
+                    "VALUES('"
+                    + check(in1) + "','"
+                    + check(in2) + "','"
+                    + check(in3) + "','"
+                    + check(in4) + "','"
+                    + check(in5) + "','"
+                    + check(in6) + "')", myConnection);
             else
                 throw new Exception("Table '" + table + "' not Found");            
 
@@ -108,32 +119,34 @@ namespace MusicStoreInventory
             myConnection.Close();
         }
 
-        public void edit(string table, string ID, string in1, string in2 = "", string in3 = "", string in4 = "", string in5 = "", string in6 = "")
+        public void edit(string table, string ID, string in1, string in2 = "", string in3 = "", string in4 = "", string in5 = "")
         {
-            //myConnection.Open();
-            //OleDbCommand myCommand = new OleDbCommand("UPDATE Customer SET "
-            //    + "Customer_Name='" + name
-            //    + "', Address='" + address
-            //    + "', Payment_Info='" + payment
-            //    + "' WHERE ID= " + ID, myConnection);
-            ////OleDbCommand myCommand = new OleDbCommand("UPDATE CUSTOMER SET Customer_Name='" + "test" + "' WHERE ID= 11", myConnection);
             myConnection.Open();
 
             OleDbCommand myCommand;
-            if (table == "Instrument")
-                myCommand = new OleDbCommand("UPDATE Instrument SET "
-                    + check(in1) + "','"
-                    + check(in2) + "','"
-                    + check(in3) + "','"
-                    + check(in4) + "','"
-                    + check(in5) + "','"
-                    + check(in6) + "')", myConnection);
-            else if (table == "Customer")
-                myCommand = new OleDbCommand("UPDATE Customer SET "
+            if (table == "Instruments")
+                myCommand = new OleDbCommand("UPDATE Instruments SET "
+                    + "Price='" + check(in1)
+                    + "', Instrument_Name='" + check(in2)
+                    + "', Make='" + check(in3)
+                    + "', Size='" + check(in4)
+                    + "', Quality='" + check(in5)
+                    + "' WHERE ID= " + ID, myConnection);
+            else if (table == "Customers")
+                myCommand = new OleDbCommand("UPDATE Customers SET "
                     + "Customer_Name='" + check(in1)
-                    + "Customer_Name='" + check(in2)
-                    + "', Address='" + check(in3)
-                    + "', Payment_Info='" + check(in4)
+                    + "', City='" + check(in2)
+                    + "', State='" + check(in3)
+                    + "', Address='" + check(in4)
+                    + "', Zip_Code='" + check(in5)
+                    + "' WHERE ID= " + ID, myConnection);
+            else if (table == "Transactions")
+                myCommand = new OleDbCommand("UPDATE Transactions SET "
+                    + "Customer='" + check(in1)
+                    + "', Instrument='" + check(in2)
+                    + "', Sale_Price='" + check(in3)
+                    + "', Listed_Price='" + check(in4)
+                    + "', Payment_Type='" + check(in5)
                     + "' WHERE ID= " + ID, myConnection);
             else
                 throw new Exception("Table '" + table + "' not Found");

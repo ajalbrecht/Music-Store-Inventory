@@ -13,12 +13,17 @@ namespace MusicStoreInventory
 {
     public partial class FormMain : Form
     {
+        // Constants
+        const string DEFAULT_BUTTON_COLOR = "ControlLight";
+        const string SELECTED_BUTTON_COLOR = "ControlDark";
+
+
         // Variables
         private SQL_Helper data;
         enum TableStates { DEFAULT, INSTRUMENTS, CUSTOMERS, TRANSACTIONS };
         private TableStates lastTable;
         enum infoBoxState { DEFAULT, ADD, EDIT, DELETE}
-        private bool editValid = false;
+        private bool isAddMode;
 
 
 
@@ -34,8 +39,8 @@ namespace MusicStoreInventory
         private void FormMain_Load(object sender, EventArgs e)
         {
             data = new SQL_Helper("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\"|DataDirectory|\\Instrument Database.mdb\"");
-            btnInfoEnter.Text = "Enter";
             RBtTableInstruments_Click(new Button(), new MouseEventArgs(MouseButtons.Left, 0, 0, 0, 0));
+            BtnAdd_Click(new Button(), new MouseEventArgs(MouseButtons.Left, 0, 0, 0, 0));
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
@@ -62,46 +67,78 @@ namespace MusicStoreInventory
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            try
-            {
-                data.add("Customer", "11", "The Dude", "123 Street", "Card");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            refreshForm();
+            if (!isAddMode)
+                txtInfo1.Text = txtInfo2.Text = txtInfo3.Text = txtInfo4.Text = txtInfo5.Text = "";
+            isAddMode = true;
+            btnInfoEnter.Text = "Add";
+            btnAdd.BackColor = Color.FromName(SELECTED_BUTTON_COLOR);
+            btnEdit.BackColor = Color.FromName(DEFAULT_BUTTON_COLOR);
+            btnDelete.BackColor = Color.FromName(DEFAULT_BUTTON_COLOR);
+            //if (rBtTableInstruments.Checked)
+            //    gBxRowInfo.Text += "Intrument:";
+            //else if (rBtTableCustomers.Checked)
+            //    gBxRowInfo.Text += "Customer:";
+            //else
+            //    gBxRowInfo.Text += "Transaction:";
+
+
+            //try
+            //{
+            //    data.add("Customer", "11", "The Dude", "123 Street", "Card");
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error: " + ex.Message);
+            //}
+            //refreshForm();
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //data.edit("11", "Dude", "321", "4321");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            refreshForm();
+            isAddMode = false;
+            btnInfoEnter.Text = "Edit";
+            btnAdd.BackColor = Color.FromName(DEFAULT_BUTTON_COLOR);
+            btnEdit.BackColor = Color.FromName(SELECTED_BUTTON_COLOR);
+            btnDelete.BackColor = Color.FromName(DEFAULT_BUTTON_COLOR);
+
+
+            DgvMain_CellClick(new DataGridView(), new DataGridViewCellEventArgs(dgvMain.SelectedCells[0].ColumnIndex, dgvMain.SelectedCells[0].RowIndex));
+
+            //try
+            //{
+            //    //fillInfoForm(dgvMain.SelectedCells[0].RowIndex);
+            //    //data.edit("11", "Dude", "321", "4321");
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error: " + ex.Message);
+            //}
+            //refreshForm();
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-            try
-            {
-                data.delete("Customer", "11");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            refreshForm();
+            isAddMode = false;
+            btnInfoEnter.Text = "Delete";
+            btnAdd.BackColor = Color.FromName(DEFAULT_BUTTON_COLOR);
+            btnEdit.BackColor = Color.FromName(DEFAULT_BUTTON_COLOR);
+            btnDelete.BackColor = Color.FromName(SELECTED_BUTTON_COLOR);
+
+            DgvMain_CellClick(new DataGridView(), new DataGridViewCellEventArgs(dgvMain.SelectedCells[0].ColumnIndex, dgvMain.SelectedCells[0].RowIndex));
+            //try
+            //{
+            //    data.delete("Customer", "11");
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error: " + ex.Message);
+            //}
+            //refreshForm();
         }
 
         private void BtnInfoEnter_Click(object sender, EventArgs e)
         {
-            data.edit(lblID.Text, txtInfo1.Text, txtInfo2.Text, txtInfo3.Text);//, txtInfo4.Text, txtInfo5);
+            //data.edit(lblID.Text, txtInfo1.Text, txtInfo2.Text, txtInfo3.Text);//, txtInfo4.Text, txtInfo5);
         }
 
         private void BtnTest_Click(object sender, EventArgs e)
@@ -174,9 +211,26 @@ namespace MusicStoreInventory
             refreshForm();
         }
 
+        private void DgvMain_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //MessageBox.Show(sender.GetType().ToString());
+            if (!isAddMode)
+            {
+                int row = e.RowIndex;
+                //int columns = dgvMain.Columns.Count - 1;
+
+                txtInfo5.Text = dgvMain.Rows[row].Cells[5].Value.ToString();
+                txtInfo4.Text = dgvMain.Rows[row].Cells[4].Value.ToString();
+                txtInfo3.Text = dgvMain.Rows[row].Cells[3].Value.ToString();
+                txtInfo2.Text = dgvMain.Rows[row].Cells[2].Value.ToString();
+                txtInfo1.Text = dgvMain.Rows[row].Cells[1].Value.ToString();
+                lblID.Text = dgvMain.Rows[row].Cells[0].Value.ToString();
+            }
+        }
 
 
-        
+
+
 
 
 
@@ -198,35 +252,6 @@ namespace MusicStoreInventory
             else
             {
 
-            }
-        }
-
-        private void fillInfoForm(int row)
-        {
-            int columns;
-            if (rBtTableInstruments.Checked)
-                columns = 5;
-            else if (rBtTableCustomers.Checked)
-                columns = 3;
-            else
-                columns = 0;
-
-            switch (columns)
-            {
-                case 5:
-                    txtInfo5.Text = dgvMain.Rows[row].Cells[5].Value.ToString();
-                    goto case 4;
-                case 4:
-                    txtInfo4.Text = dgvMain.Rows[row].Cells[4].Value.ToString();
-                    goto case 3;
-                case 3:
-                    txtInfo3.Text = dgvMain.Rows[row].Cells[3].Value.ToString();
-                    txtInfo2.Text = dgvMain.Rows[row].Cells[2].Value.ToString();
-                    txtInfo1.Text = dgvMain.Rows[row].Cells[1].Value.ToString();
-                    lblID.Text = dgvMain.Rows[row].Cells[0].Value.ToString();
-                    break;
-                default:
-                    break;
             }
         }
 
