@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvMain = new System.Windows.Forms.DataGridView();
-            this.instrument_DatabaseDataSet = new MusicStoreInventory.Instrument_DatabaseDataSet();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.gBxSearchCriteria = new System.Windows.Forms.GroupBox();
@@ -65,12 +64,14 @@
             this.txtInfo3 = new System.Windows.Forms.TextBox();
             this.txtInfo1 = new System.Windows.Forms.TextBox();
             this.txtInfo2 = new System.Windows.Forms.TextBox();
+            this.txtTest = new System.Windows.Forms.TextBox();
+            this.instrument_DatabaseDataSet = new MusicStoreInventory.Instrument_DatabaseDataSet();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.instrument_DatabaseDataSet)).BeginInit();
             this.gBxSearchCriteria.SuspendLayout();
             this.gBxAdEdDe.SuspendLayout();
             this.gBxSelectTable.SuspendLayout();
             this.gBxRowInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.instrument_DatabaseDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvMain
@@ -84,11 +85,6 @@
             this.dgvMain.Size = new System.Drawing.Size(528, 239);
             this.dgvMain.TabIndex = 9;
             this.dgvMain.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvMain_CellClick);
-            // 
-            // instrument_DatabaseDataSet
-            // 
-            this.instrument_DatabaseDataSet.DataSetName = "Instrument_DatabaseDataSet";
-            this.instrument_DatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtSearch
             // 
@@ -263,7 +259,7 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(425, 25);
+            this.btnTest.Location = new System.Drawing.Point(388, 28);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(75, 23);
             this.btnTest.TabIndex = 20;
@@ -464,11 +460,24 @@
             this.txtInfo2.TabIndex = 17;
             this.txtInfo2.Text = "txtInfo2";
             // 
+            // txtTest
+            // 
+            this.txtTest.Location = new System.Drawing.Point(470, 30);
+            this.txtTest.Name = "txtTest";
+            this.txtTest.Size = new System.Drawing.Size(64, 20);
+            this.txtTest.TabIndex = 25;
+            // 
+            // instrument_DatabaseDataSet
+            // 
+            this.instrument_DatabaseDataSet.DataSetName = "Instrument_DatabaseDataSet";
+            this.instrument_DatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(767, 436);
+            this.Controls.Add(this.txtTest);
             this.Controls.Add(this.gBxRowInfo);
             this.Controls.Add(this.gBxSelectTable);
             this.Controls.Add(this.btnTest);
@@ -476,10 +485,9 @@
             this.Controls.Add(this.gBxSearchCriteria);
             this.Controls.Add(this.dgvMain);
             this.Name = "FormMain";
-            this.Text = "Database Manager v1.9";
+            this.Text = "Database Manager v1.10";
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.instrument_DatabaseDataSet)).EndInit();
             this.gBxSearchCriteria.ResumeLayout(false);
             this.gBxSearchCriteria.PerformLayout();
             this.gBxAdEdDe.ResumeLayout(false);
@@ -487,7 +495,9 @@
             this.gBxSelectTable.PerformLayout();
             this.gBxRowInfo.ResumeLayout(false);
             this.gBxRowInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.instrument_DatabaseDataSet)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -510,7 +520,6 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnTest;
-        private Instrument_DatabaseDataSet instrument_DatabaseDataSet;
         private System.Windows.Forms.GroupBox gBxSelectTable;
         private System.Windows.Forms.RadioButton rBtTableTransactions;
         private System.Windows.Forms.RadioButton rBtTableCustomers;
@@ -530,6 +539,8 @@
         private System.Windows.Forms.Label lblInfo5;
         private System.Windows.Forms.Label lblPK;
         private System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.TextBox txtTest;
+        private Instrument_DatabaseDataSet instrument_DatabaseDataSet;
     }
 }
 

@@ -29,3 +29,14 @@ C:\Users\patrickmcbrien\Downloads\Music-Store-Inventory-main - Backup\MusicStore
 C:\Users\patrickmcbrien\Downloads\Music-Store-Inventory-main - Backup\MusicStoreInventory\MusicStoreInventory\obj\Debug\MusicStoreInventory.exe
 C:\Users\patrickmcbrien\Downloads\Music-Store-Inventory-main - Backup\MusicStoreInventory\MusicStoreInventory\obj\Debug\MusicStoreInventory.pdb
 C:\Users\patrickmcbrien\Downloads\Music-Store-Inventory-main\MusicStoreInventory\MusicStoreInventory\bin\Debug\Instrument Database.mdb
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\bin\Debug\Instrument Database.mdb
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\bin\Debug\MusicStoreInventory.exe.config
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\bin\Debug\MusicStoreInventory.exe
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\bin\Debug\MusicStoreInventory.pdb
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Debug\MusicStoreInventory.csprojAssemblyReference.cache
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Debug\MusicStoreInventory.FormMain.resources
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Debug\MusicStoreInventory.Properties.Resources.resources
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Debug\MusicStoreInventory.csproj.GenerateResource.cache
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Debug\MusicStoreInventory.csproj.CoreCompileInputs.cache
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Debug\MusicStoreInventory.exe
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Debug\MusicStoreInventory.pdb
