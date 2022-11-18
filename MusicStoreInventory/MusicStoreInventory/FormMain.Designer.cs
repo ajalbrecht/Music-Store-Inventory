@@ -64,7 +64,6 @@
             this.txtInfo3 = new System.Windows.Forms.TextBox();
             this.txtInfo1 = new System.Windows.Forms.TextBox();
             this.txtInfo2 = new System.Windows.Forms.TextBox();
-            this.txtTest = new System.Windows.Forms.TextBox();
             this.instrument_DatabaseDataSet = new MusicStoreInventory.Instrument_DatabaseDataSet();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             this.gBxSearchCriteria.SuspendLayout();
@@ -460,13 +459,6 @@
             this.txtInfo2.TabIndex = 17;
             this.txtInfo2.Text = "txtInfo2";
             // 
-            // txtTest
-            // 
-            this.txtTest.Location = new System.Drawing.Point(470, 30);
-            this.txtTest.Name = "txtTest";
-            this.txtTest.Size = new System.Drawing.Size(64, 20);
-            this.txtTest.TabIndex = 25;
-            // 
             // instrument_DatabaseDataSet
             // 
             this.instrument_DatabaseDataSet.DataSetName = "Instrument_DatabaseDataSet";
@@ -477,7 +469,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(767, 436);
-            this.Controls.Add(this.txtTest);
             this.Controls.Add(this.gBxRowInfo);
             this.Controls.Add(this.gBxSelectTable);
             this.Controls.Add(this.btnTest);
@@ -485,7 +476,7 @@
             this.Controls.Add(this.gBxSearchCriteria);
             this.Controls.Add(this.dgvMain);
             this.Name = "FormMain";
-            this.Text = "Database Manager v1.10";
+            this.Text = "Database Manager v1.11";
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
             this.gBxSearchCriteria.ResumeLayout(false);
@@ -497,7 +488,6 @@
             this.gBxRowInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.instrument_DatabaseDataSet)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -539,7 +529,6 @@
         private System.Windows.Forms.Label lblInfo5;
         private System.Windows.Forms.Label lblPK;
         private System.Windows.Forms.Label lblID;
-        private System.Windows.Forms.TextBox txtTest;
         private Instrument_DatabaseDataSet instrument_DatabaseDataSet;
     }
 }

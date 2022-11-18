@@ -29,16 +29,17 @@ namespace MusicStoreInventory
 
 
         // Methods
-        private int getPK(string table)
+        private string getNewPK(string table)
         {
             OleDbCommand myCommand = new OleDbCommand("SELECT MAX(ID) FROM " + table, myConnection);
             try
             {
-                return (int)myCommand.ExecuteScalar();
+                int newPK = (int)myCommand.ExecuteScalar() + 1;
+                return newPK.ToString();
             }
             catch (Exception)
             {
-                return 1;
+                return "1";
             }
         }
 
@@ -53,74 +54,80 @@ namespace MusicStoreInventory
         private string isInt(string input)
         {
             int num;
-            if (int.TryParse(input, out num))
+            if (!int.TryParse(input, out num))
                 throw new Exception("Invalid Input, '" + input + "' is Not an Integer");
             return input;
         }
-
-        private string isFloat(string input)
+        
+        private string isPrice(string input)
         {
             float num;
-            if (float.TryParse(input, out num))
+            if (input.Length != 0 && input[0] == '$')
+                input = input.Substring(1, input.Length - 1);
+            if (!float.TryParse(input, out num))
                 throw new Exception("Invalid Input, '" + input + "' is Not an Float");
+            input = num.ToString("C");
             return input;
         }
 
-        public void search(string table, string column, string searchTerm)
+        public OleDbDataAdapter search()// string table, string column, string searchTerm)
         {
-            myConnection.Open();
-            OleDbCommand myCommand = new OleDbCommand("SELECT " + column + " FROM " + table + " WHERE " + column, myConnection);// + " = " + searchTerm, myConnection);
+            return new OleDbDataAdapter
+                ("SELECT * FROM Instruments WHERE [Size]= '4/4'", myConnection);
+            //myConnection.Open();
+            //OleDbCommand myCommand = new OleDbCommand("SELECT " + column + " FROM " + table + " WHERE " + column, myConnection);// + " = " + searchTerm, myConnection);
 
-            try
-            {
-                myCommand.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                myConnection.Close();
-                throw ex;
-            }
+            //try
+            //{
+            //    myCommand.ExecuteNonQuery();
+            //}
+            //catch (Exception ex)
+            //{
+            //    myConnection.Close();
+            //    throw ex;
+            //}
 
-            myConnection.Close();
+            //myConnection.Close();
         }
 
         public void add(string table, string in1, string in2 = "", string in3 = "", string in4 = "", string in5 = "")//, string in6 = "")
         {
             myConnection.Open();
 
-            OleDbCommand myCommand;
-            if (table == "Instruments")
-                myCommand = new OleDbCommand("INSERT INTO Instruments ([ID],[Instrument_Name],[Make],[Size],[Price],[Quality]) " +
-                    "VALUES('"
-                    + (getPK(table) + 1).ToString() + "','"
-                    + check(in1) + "','"
-                    + check(in2) + "','"
-                    + check(in3) + "','"
-                    + check(in4) + "','"
-                    + check(in5) + "')", myConnection);
-            else if (table == "Customers")
-                myCommand = new OleDbCommand("INSERT INTO Customers ([ID],[Customer_Name],[City],[State],[Address],[Zip_Code]) " +
-                    "VALUES('"
-                    + (getPK(table) + 1).ToString() + "','"
-                    + check(in1) + "','"
-                    + check(in2) + "','"
-                    + check(in3) + "','"
-                    + check(in4) + "','"
-                    + check(in5) + "')", myConnection);
-            else if (table == "Transactions")
-                myCommand = new OleDbCommand("INSERT INTO Transactions ([ID],[Customer],[Instrument],[Sale_Price],[Listed_Price],[Payment_Type]) " +
-                    "VALUES('"
-                    + (getPK(table) + 1).ToString() + "','"
-                    + check(in1) + "','"
-                    + check(in2) + "','"
-                    + check(in3) + "','"
-                    + check(in4) + "','"
-                    + check(in5) + "')", myConnection);
-            else
-                throw new Exception("Table '" + table + "' Not Found");            
-
             try
             {
+                OleDbCommand myCommand;
+                if (table == "Instruments")
+                    myCommand = new OleDbCommand("INSERT INTO Instruments ([ID],[Instrument_Name],[Make],[Size],[Price],[Quality]) " +
+                        "VALUES('"
+                        + getNewPK(table) + "','"
+                        + check(in1) + "','"
+                        + check(in2) + "','"
+                        + check(in3) + "','"
+                        + isPrice(in4) + "','"
+                        + check(in5) + "')", myConnection);
+                else if (table == "Customers")
+                    myCommand = new OleDbCommand("INSERT INTO Customers ([ID],[Customer_Name],[City],[State],[Address],[Zip_Code]) " +
+                    //myCommand = new OleDbCommand("INSERT INTO Customers ([ID],[Customer_Name],[City],[State],[Address],[Zipcode]) " +
+                    "VALUES('"
+                    + getNewPK(table) + "','"
+                        + check(in1) + "','"
+                        + check(in2) + "','"
+                        + check(in3) + "','"
+                        + check(in4) + "','"
+                        + isInt(in5) + "')", myConnection);
+                else if (table == "Transactions")
+                    myCommand = new OleDbCommand("INSERT INTO Transactions ([ID],[Customer],[Instrument],[Sale_Price],[Listed_Price],[Payment_Type]) " +
+                        "VALUES('"
+                        + getNewPK(table) + "','"
+                        + check(in1) + "','"
+                        + check(in2) + "','"
+                        + isPrice(in3) + "','"
+                        + isPrice(in4) + "','"
+                        + check(in5) + "')", myConnection);
+                else
+                    throw new Exception("Table '" + table + "' Not Found");            
+
                 myCommand.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -136,36 +143,36 @@ namespace MusicStoreInventory
         {
             myConnection.Open();
 
-            OleDbCommand myCommand;
-            if (table == "Instruments")
-                myCommand = new OleDbCommand("UPDATE Instruments SET "
-                    + "Instrument_Name='" + check(in1)
-                    + "', Make='" + check(in2)
-                    + "', Size='" + check(in3)
-                    + "', Price='" + check(in4)
-                    + "', Quality='" + check(in5)
-                    + "' WHERE ID= " + ID, myConnection);
-            else if (table == "Customers")
-                myCommand = new OleDbCommand("UPDATE Customers SET "
-                    + "Customer_Name='" + check(in1)
-                    + "', City='" + check(in2)
-                    + "', State='" + check(in3)
-                    + "', Address='" + check(in4)
-                    + "', Zip_Code='" + check(in5)
-                    + "' WHERE ID= " + ID, myConnection);
-            else if (table == "Transactions")
-                myCommand = new OleDbCommand("UPDATE Transactions SET "
-                    + "Customer='" + check(in1)
-                    + "', Instrument='" + check(in2)
-                    + "', Sale_Price='" + check(in3)
-                    + "', Listed_Price='" + check(in4)
-                    + "', Payment_Type='" + check(in5)
-                    + "' WHERE ID= " + ID, myConnection);
-            else
-                throw new Exception("Table '" + table + "' not Found");
-
             try
             {
+                OleDbCommand myCommand;
+                if (table == "Instruments")
+                    myCommand = new OleDbCommand("UPDATE Instruments SET "
+                        + "Instrument_Name='" + check(in1)
+                        + "', Make='" + check(in2)
+                        + "', Size='" + check(in3)
+                        + "', Price='" + isPrice(in4)
+                        + "', Quality='" + check(in5)
+                        + "' WHERE ID= " + ID, myConnection);
+                else if (table == "Customers")
+                    myCommand = new OleDbCommand("UPDATE Customers SET "
+                        + "Customer_Name='" + check(in1)
+                        + "', City='" + check(in2)
+                        + "', State='" + check(in3)
+                        + "', Address='" + check(in4)
+                        + "', Zip_Code='" + isInt(in5)
+                        + "' WHERE ID= " + ID, myConnection);
+                else if (table == "Transactions")
+                    myCommand = new OleDbCommand("UPDATE Transactions SET "
+                        + "Customer='" + check(in1)
+                        + "', Instrument='" + check(in2)
+                        + "', Sale_Price='" + isPrice(in3)
+                        + "', Listed_Price='" + isPrice(in4)
+                        + "', Payment_Type='" + check(in5)
+                        + "' WHERE ID= " + ID, myConnection);
+                else
+                    throw new Exception("Table '" + table + "' not Found");
+
                 myCommand.ExecuteNonQuery();
             }
             catch (Exception ex)

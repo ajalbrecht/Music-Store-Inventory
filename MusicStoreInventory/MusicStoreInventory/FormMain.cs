@@ -50,6 +50,11 @@ namespace MusicStoreInventory
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
+            DataTable datatable = new DataTable();
+            System.Data.OleDb.OleDbDataAdapter dataadapter = data.search();
+            
+            dataadapter.Fill(datatable);
+            dgvMain.DataSource = datatable;
             //if (validateDataInput(txtSearch.Text))
             //    try
             //    {
@@ -141,12 +146,16 @@ namespace MusicStoreInventory
             int row = dgvMain.SelectedCells[0].RowIndex;
             int column = dgvMain.SelectedCells[0].ColumnIndex;
             refreshForm();
-            DgvMain_CellClick(new DataGridView(), new DataGridViewCellEventArgs(dgvMain.SelectedCells[column].ColumnIndex, dgvMain.SelectedCells[row].RowIndex));
+            DgvMain_CellClick(new DataGridView(), new DataGridViewCellEventArgs(column, row));
         }
 
         private void BtnTest_Click(object sender, EventArgs e)
         {
-
+            string input = "";
+            double temp = 0;
+            //MessageBox.Show("Converted: " + double.TryParse(input, out temp).ToString() + " " + temp.ToString());
+            // input = temp.ToString("C");
+            //MessageBox.Show("Formated: " + input);
         }
 
         private void RBtTableInstruments_Click(object sender, EventArgs e)
@@ -226,7 +235,6 @@ namespace MusicStoreInventory
 
         private void DgvMain_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //MessageBox.Show(sender.GetType().ToString());
             if (lastInfoState != AddEditDeleteState.ADD)
             {
                 int row = e.RowIndex;
@@ -291,25 +299,6 @@ namespace MusicStoreInventory
                 }
                 else
                     return true;
-            }
-            else
-            {
-
-                return true;
-            }
-        }
-
-        private bool validateDataInput()
-        {
-            if (rBtTableInstruments.Checked)
-            {
-                double number;
-                return double.TryParse(txtInfo4.Text, out number);
-            }
-            else if (rBtTableCustomers.Checked)
-            {
-                int number;
-                return int.TryParse(txtInfo5.Text, out number);
             }
             else
             {

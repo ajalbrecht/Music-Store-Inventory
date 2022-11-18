@@ -1,0 +1,11 @@
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\bin\Release\Instrument Database.mdb
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\bin\Release\MusicStoreInventory.exe.config
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\bin\Release\MusicStoreInventory.exe
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\bin\Release\MusicStoreInventory.pdb
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.csprojAssemblyReference.cache
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.FormMain.resources
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.Properties.Resources.resources
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.csproj.GenerateResource.cache
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.csproj.CoreCompileInputs.cache
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.exe
+C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.pdb
