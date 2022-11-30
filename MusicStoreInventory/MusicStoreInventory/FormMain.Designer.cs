@@ -83,6 +83,7 @@
             this.dgvMain.ReadOnly = true;
             this.dgvMain.Size = new System.Drawing.Size(528, 239);
             this.dgvMain.TabIndex = 9;
+            this.dgvMain.TabStop = false;
             this.dgvMain.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvMain_CellClick);
             // 
             // txtSearch
@@ -90,14 +91,14 @@
             this.txtSearch.Location = new System.Drawing.Point(6, 17);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(135, 20);
-            this.txtSearch.TabIndex = 6;
+            this.txtSearch.TabIndex = 0;
             // 
             // btnSearch
             // 
             this.btnSearch.Location = new System.Drawing.Point(6, 43);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(135, 30);
-            this.btnSearch.TabIndex = 5;
+            this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
@@ -118,7 +119,7 @@
             this.gBxSearchCriteria.Location = new System.Drawing.Point(12, 64);
             this.gBxSearchCriteria.Name = "gBxSearchCriteria";
             this.gBxSearchCriteria.Size = new System.Drawing.Size(362, 114);
-            this.gBxSearchCriteria.TabIndex = 10;
+            this.gBxSearchCriteria.TabIndex = 1;
             this.gBxSearchCriteria.TabStop = false;
             this.gBxSearchCriteria.Text = "Search:";
             // 
@@ -128,7 +129,7 @@
             this.rBtSearch8.Location = new System.Drawing.Point(254, 86);
             this.rBtSearch8.Name = "rBtSearch8";
             this.rBtSearch8.Size = new System.Drawing.Size(78, 17);
-            this.rBtSearch8.TabIndex = 12;
+            this.rBtSearch8.TabIndex = 10;
             this.rBtSearch8.Text = "rBtSearch8";
             this.rBtSearch8.UseVisualStyleBackColor = true;
             // 
@@ -137,7 +138,7 @@
             this.btnExit.Location = new System.Drawing.Point(5, 79);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(135, 30);
-            this.btnExit.TabIndex = 11;
+            this.btnExit.TabIndex = 2;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
@@ -158,7 +159,7 @@
             this.rBtSearch6.Location = new System.Drawing.Point(254, 41);
             this.rBtSearch6.Name = "rBtSearch6";
             this.rBtSearch6.Size = new System.Drawing.Size(78, 17);
-            this.rBtSearch6.TabIndex = 5;
+            this.rBtSearch6.TabIndex = 8;
             this.rBtSearch6.Text = "rBtSearch6";
             this.rBtSearch6.UseVisualStyleBackColor = true;
             // 
@@ -168,7 +169,7 @@
             this.rBtSearch7.Location = new System.Drawing.Point(254, 64);
             this.rBtSearch7.Name = "rBtSearch7";
             this.rBtSearch7.Size = new System.Drawing.Size(78, 17);
-            this.rBtSearch7.TabIndex = 4;
+            this.rBtSearch7.TabIndex = 9;
             this.rBtSearch7.Text = "rBtSearch7";
             this.rBtSearch7.UseVisualStyleBackColor = true;
             // 
@@ -178,7 +179,7 @@
             this.rBtSearch5.Location = new System.Drawing.Point(254, 18);
             this.rBtSearch5.Name = "rBtSearch5";
             this.rBtSearch5.Size = new System.Drawing.Size(78, 17);
-            this.rBtSearch5.TabIndex = 3;
+            this.rBtSearch5.TabIndex = 7;
             this.rBtSearch5.Text = "rBtSearch5";
             this.rBtSearch5.UseVisualStyleBackColor = true;
             // 
@@ -188,7 +189,7 @@
             this.rBtSearch3.Location = new System.Drawing.Point(167, 64);
             this.rBtSearch3.Name = "rBtSearch3";
             this.rBtSearch3.Size = new System.Drawing.Size(78, 17);
-            this.rBtSearch3.TabIndex = 2;
+            this.rBtSearch3.TabIndex = 5;
             this.rBtSearch3.Text = "rBtSearch3";
             this.rBtSearch3.UseVisualStyleBackColor = true;
             // 
@@ -198,7 +199,7 @@
             this.rBtSearch2.Location = new System.Drawing.Point(167, 41);
             this.rBtSearch2.Name = "rBtSearch2";
             this.rBtSearch2.Size = new System.Drawing.Size(78, 17);
-            this.rBtSearch2.TabIndex = 1;
+            this.rBtSearch2.TabIndex = 4;
             this.rBtSearch2.Text = "rBtSearch2";
             this.rBtSearch2.UseVisualStyleBackColor = true;
             // 
@@ -209,7 +210,7 @@
             this.rBtSearch1.Location = new System.Drawing.Point(167, 18);
             this.rBtSearch1.Name = "rBtSearch1";
             this.rBtSearch1.Size = new System.Drawing.Size(78, 17);
-            this.rBtSearch1.TabIndex = 0;
+            this.rBtSearch1.TabIndex = 3;
             this.rBtSearch1.TabStop = true;
             this.rBtSearch1.Text = "rBtSearch1";
             this.rBtSearch1.UseVisualStyleBackColor = true;
@@ -222,7 +223,7 @@
             this.gBxAdEdDe.Location = new System.Drawing.Point(381, 64);
             this.gBxAdEdDe.Name = "gBxAdEdDe";
             this.gBxAdEdDe.Size = new System.Drawing.Size(159, 114);
-            this.gBxAdEdDe.TabIndex = 11;
+            this.gBxAdEdDe.TabIndex = 2;
             this.gBxAdEdDe.TabStop = false;
             this.gBxAdEdDe.Text = "Edit Data:";
             // 
@@ -262,6 +263,7 @@
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(75, 23);
             this.btnTest.TabIndex = 20;
+            this.btnTest.TabStop = false;
             this.btnTest.Text = "test";
             this.btnTest.UseVisualStyleBackColor = true;
             this.btnTest.Click += new System.EventHandler(this.BtnTest_Click);
@@ -274,7 +276,7 @@
             this.gBxSelectTable.Location = new System.Drawing.Point(12, 12);
             this.gBxSelectTable.Name = "gBxSelectTable";
             this.gBxSelectTable.Size = new System.Drawing.Size(362, 46);
-            this.gBxSelectTable.TabIndex = 21;
+            this.gBxSelectTable.TabIndex = 0;
             this.gBxSelectTable.TabStop = false;
             this.gBxSelectTable.Text = "Select Table:";
             // 
@@ -284,7 +286,7 @@
             this.rBtTableTransactions.Location = new System.Drawing.Point(171, 19);
             this.rBtTableTransactions.Name = "rBtTableTransactions";
             this.rBtTableTransactions.Size = new System.Drawing.Size(86, 17);
-            this.rBtTableTransactions.TabIndex = 6;
+            this.rBtTableTransactions.TabIndex = 2;
             this.rBtTableTransactions.Text = "Transactions";
             this.rBtTableTransactions.UseVisualStyleBackColor = true;
             this.rBtTableTransactions.Click += new System.EventHandler(this.RBtTableTransactions_Click);
@@ -295,7 +297,7 @@
             this.rBtTableCustomers.Location = new System.Drawing.Point(91, 19);
             this.rBtTableCustomers.Name = "rBtTableCustomers";
             this.rBtTableCustomers.Size = new System.Drawing.Size(74, 17);
-            this.rBtTableCustomers.TabIndex = 5;
+            this.rBtTableCustomers.TabIndex = 1;
             this.rBtTableCustomers.Text = "Customers";
             this.rBtTableCustomers.UseVisualStyleBackColor = true;
             this.rBtTableCustomers.Click += new System.EventHandler(this.RBtTableCustomers_Click);
@@ -307,7 +309,7 @@
             this.rBtTableInstruments.Location = new System.Drawing.Point(6, 19);
             this.rBtTableInstruments.Name = "rBtTableInstruments";
             this.rBtTableInstruments.Size = new System.Drawing.Size(79, 17);
-            this.rBtTableInstruments.TabIndex = 4;
+            this.rBtTableInstruments.TabIndex = 0;
             this.rBtTableInstruments.TabStop = true;
             this.rBtTableInstruments.Text = "Instruments";
             this.rBtTableInstruments.UseVisualStyleBackColor = true;
@@ -331,7 +333,7 @@
             this.gBxRowInfo.Location = new System.Drawing.Point(546, 12);
             this.gBxRowInfo.Name = "gBxRowInfo";
             this.gBxRowInfo.Size = new System.Drawing.Size(209, 411);
-            this.gBxRowInfo.TabIndex = 23;
+            this.gBxRowInfo.TabIndex = 3;
             this.gBxRowInfo.TabStop = false;
             this.gBxRowInfo.Text = "gBxRowInfo";
             // 
@@ -360,7 +362,7 @@
             this.txtInfo5.Margin = new System.Windows.Forms.Padding(2);
             this.txtInfo5.Name = "txtInfo5";
             this.txtInfo5.Size = new System.Drawing.Size(76, 20);
-            this.txtInfo5.TabIndex = 22;
+            this.txtInfo5.TabIndex = 4;
             this.txtInfo5.Text = "txtInfo5";
             // 
             // lblInfo5
@@ -419,7 +421,7 @@
             this.txtInfo4.Margin = new System.Windows.Forms.Padding(2);
             this.txtInfo4.Name = "txtInfo4";
             this.txtInfo4.Size = new System.Drawing.Size(76, 20);
-            this.txtInfo4.TabIndex = 19;
+            this.txtInfo4.TabIndex = 3;
             this.txtInfo4.Text = "txtInfo4";
             // 
             // lblInfo4
@@ -438,7 +440,7 @@
             this.txtInfo3.Margin = new System.Windows.Forms.Padding(2);
             this.txtInfo3.Name = "txtInfo3";
             this.txtInfo3.Size = new System.Drawing.Size(76, 20);
-            this.txtInfo3.TabIndex = 18;
+            this.txtInfo3.TabIndex = 2;
             this.txtInfo3.Text = "txtInfo3";
             // 
             // txtInfo1
@@ -447,7 +449,7 @@
             this.txtInfo1.Margin = new System.Windows.Forms.Padding(2);
             this.txtInfo1.Name = "txtInfo1";
             this.txtInfo1.Size = new System.Drawing.Size(76, 20);
-            this.txtInfo1.TabIndex = 16;
+            this.txtInfo1.TabIndex = 0;
             this.txtInfo1.Text = "txtInfo1";
             // 
             // txtInfo2
@@ -456,7 +458,7 @@
             this.txtInfo2.Margin = new System.Windows.Forms.Padding(2);
             this.txtInfo2.Name = "txtInfo2";
             this.txtInfo2.Size = new System.Drawing.Size(76, 20);
-            this.txtInfo2.TabIndex = 17;
+            this.txtInfo2.TabIndex = 1;
             this.txtInfo2.Text = "txtInfo2";
             // 
             // instrument_DatabaseDataSet
@@ -476,7 +478,7 @@
             this.Controls.Add(this.gBxSearchCriteria);
             this.Controls.Add(this.dgvMain);
             this.Name = "FormMain";
-            this.Text = "Database Manager v1.11";
+            this.Text = "Database Manager v2.0";
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
             this.gBxSearchCriteria.ResumeLayout(false);

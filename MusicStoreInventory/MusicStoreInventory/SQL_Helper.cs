@@ -14,6 +14,8 @@ namespace MusicStoreInventory
 
 
 
+        
+        
         // Default Constructor
         public SQL_Helper()
         {
@@ -28,7 +30,7 @@ namespace MusicStoreInventory
 
 
 
-        // Methods
+        // Private Methods
         private string getNewPK(string table)
         {
             OleDbCommand myCommand = new OleDbCommand("SELECT MAX(ID) FROM " + table, myConnection);
@@ -70,24 +72,17 @@ namespace MusicStoreInventory
             return input;
         }
 
-        public OleDbDataAdapter search()// string table, string column, string searchTerm)
+
+
+        // Public Methods
+        public System.Data.DataTable search(string table, string column, string searchTerm)
         {
-            return new OleDbDataAdapter
-                ("SELECT * FROM Instruments WHERE [Size]= '4/4'", myConnection);
-            //myConnection.Open();
-            //OleDbCommand myCommand = new OleDbCommand("SELECT " + column + " FROM " + table + " WHERE " + column, myConnection);// + " = " + searchTerm, myConnection);
+            System.Data.DataTable dataTable = new System.Data.DataTable();
+            System.Data.OleDb.OleDbDataAdapter dataAdapter = new System.Data.OleDb.OleDbDataAdapter
+                ("SELECT * FROM " + check(table) + " WHERE [" + check(column) + "]= '" + check(searchTerm) + "'", myConnection);
 
-            //try
-            //{
-            //    myCommand.ExecuteNonQuery();
-            //}
-            //catch (Exception ex)
-            //{
-            //    myConnection.Close();
-            //    throw ex;
-            //}
-
-            //myConnection.Close();
+            dataAdapter.Fill(dataTable);
+            return dataTable;
         }
 
         public void add(string table, string in1, string in2 = "", string in3 = "", string in4 = "", string in5 = "")//, string in6 = "")
@@ -107,8 +102,7 @@ namespace MusicStoreInventory
                         + isPrice(in4) + "','"
                         + check(in5) + "')", myConnection);
                 else if (table == "Customers")
-                    myCommand = new OleDbCommand("INSERT INTO Customers ([ID],[Customer_Name],[City],[State],[Address],[Zip_Code]) " +
-                    //myCommand = new OleDbCommand("INSERT INTO Customers ([ID],[Customer_Name],[City],[State],[Address],[Zipcode]) " +
+                    myCommand = new OleDbCommand("INSERT INTO Customers ([ID],[Customer_Name],[Address],[City],[State],[Zip_Code]) " +
                     "VALUES('"
                     + getNewPK(table) + "','"
                         + check(in1) + "','"

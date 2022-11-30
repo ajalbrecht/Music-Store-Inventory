@@ -18,6 +18,7 @@ namespace MusicStoreInventory
         const string SELECTED_BUTTON_COLOR = "ControlDark";
 
 
+        
         // Variables
         private SQL_Helper data;
         enum TableStates { DEFAULT, INSTRUMENTS, CUSTOMERS, TRANSACTIONS };
@@ -50,24 +51,106 @@ namespace MusicStoreInventory
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-            DataTable datatable = new DataTable();
-            System.Data.OleDb.OleDbDataAdapter dataadapter = data.search();
-            
-            dataadapter.Fill(datatable);
-            dgvMain.DataSource = datatable;
-            //if (validateDataInput(txtSearch.Text))
-            //    try
-            //    {
-            //        data.search("Customer", "Customer_Name", txtSearch.Text);
-            //        refreshForm();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show("Error: " + ex.Message);
-            //        throw;
-            //    }
-            //else
-            //    MessageBox.Show("Error: Wrong Data Type Entered");
+            string searchTerm = txtSearch.Text;
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                refreshForm();
+                return;
+            }
+
+            ushort rBtNumber = ushort.MaxValue;
+            if (rBtSearch1.Checked)
+                rBtNumber = 1;
+            else if (rBtSearch2.Checked)
+                rBtNumber = 2;
+            else if (rBtSearch3.Checked)
+                rBtNumber = 3;
+            else if (rBtSearch4.Checked)
+                rBtNumber = 4;
+            else
+                rBtNumber = 5;
+
+
+
+            string table;
+            string column;
+            if (lastTable == TableStates.INSTRUMENTS)
+            {
+                table = "Instruments";
+                switch (rBtNumber)
+                {
+                    case 1:
+                        column = "Instrument_Name";
+                        break;
+                    case 2:
+                        column = "Make";
+                        break;
+                    case 3:
+                        column = "Size";
+                        break;
+                    case 4:
+                        column = "Price";
+                        break;
+                    default:
+                        column = "Quality";
+                        break;
+                }
+            }
+            else if (lastTable == TableStates.CUSTOMERS)
+            {
+                table = "Customers";
+                switch (rBtNumber)
+                {
+                    case 1:
+                        column = "Customer_Name";
+                        break;
+                    case 2:
+                        column = "Address";
+                        break;
+                    case 3:
+                        column = "City";
+                        break;
+                    case 4:
+                        column = "State";
+                        break;
+                    default:
+                        column = "Zip_Code";
+                        break;
+                }
+            }
+            else
+            {
+                table = "Transactions";
+                switch (rBtNumber)
+                {
+                    case 1:
+                        column = "Customer";
+                        break;
+                    case 2:
+                        column = "Instrument";
+                        break;
+                    case 3:
+                        column = "Sale_Price";
+                        break;
+                    case 4:
+                        column = "Listed_Price";
+                        break;
+                    default:
+                        column = "Payment_Type";
+                        break;
+                }
+            }
+
+
+
+            try
+            {
+                dgvMain.DataSource = data.search(table, column, searchTerm);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -75,6 +158,7 @@ namespace MusicStoreInventory
             if (lastInfoState == AddEditDeleteState.ADD)
                 return;
 
+            lblID.Text = "#";
             txtInfo1.Text = txtInfo2.Text = txtInfo3.Text = txtInfo4.Text = txtInfo5.Text = "";
             lastInfoState = AddEditDeleteState.ADD;
             btnInfoEnter.Text = "Add";
@@ -143,10 +227,15 @@ namespace MusicStoreInventory
                 MessageBox.Show("Error: " + ex.Message);
             }
 
-            int row = dgvMain.SelectedCells[0].RowIndex;
-            int column = dgvMain.SelectedCells[0].ColumnIndex;
-            refreshForm();
-            DgvMain_CellClick(new DataGridView(), new DataGridViewCellEventArgs(column, row));
+            if (lastInfoState == AddEditDeleteState.EDIT)
+            {
+                int row = dgvMain.SelectedCells[0].RowIndex;
+                int column = dgvMain.SelectedCells[0].ColumnIndex;
+                refreshForm();
+                DgvMain_CellClick(new DataGridView(), new DataGridViewCellEventArgs(column, row));
+            }
+            else
+                refreshForm();
         }
 
         private void BtnTest_Click(object sender, EventArgs e)
@@ -165,21 +254,11 @@ namespace MusicStoreInventory
 
             txtInfo1.Text = txtInfo2.Text = txtInfo3.Text = txtInfo4.Text = txtInfo5.Text = "";
             gBxRowInfo.Text = "Instrument Info:";
-            //rBtSearch1.Text = lblInfo1.Text = "Name";
-            //rBtSearch2.Text = lblInfo2.Text = "Make";
-            //rBtSearch3.Text = lblInfo3.Text = "Size";
-            //rBtSearch4.Text = lblInfo4.Text = "Price";
-            //rBtSearch5.Text = lblInfo5.Text = "Quality";
-
-            // REMOVE
-
-            rBtSearch4.Text = lblInfo1.Text = "Price";
-            rBtSearch1.Text = lblInfo2.Text = "Name";
-            rBtSearch2.Text = lblInfo3.Text = "Make";
-            rBtSearch3.Text = lblInfo4.Text = "Size";
+            rBtSearch1.Text = lblInfo1.Text = "Name";
+            rBtSearch2.Text = lblInfo2.Text = "Make";
+            rBtSearch3.Text = lblInfo3.Text = "Size";
+            rBtSearch4.Text = lblInfo4.Text = "Price";
             rBtSearch5.Text = lblInfo5.Text = "Quality";
-
-            // END REMOVE
 
             rBtSearch6.Visible = false;
             rBtSearch7.Visible = false;
@@ -197,9 +276,9 @@ namespace MusicStoreInventory
             txtInfo1.Text = txtInfo2.Text = txtInfo3.Text = txtInfo4.Text = txtInfo5.Text = "";
             gBxRowInfo.Text = "Customer Info:";
             rBtSearch1.Text = lblInfo1.Text = "Name";
-            rBtSearch2.Text = lblInfo2.Text = "City";
-            rBtSearch3.Text = lblInfo3.Text = "State";
-            rBtSearch4.Text = lblInfo4.Text = "Address";
+            rBtSearch2.Text = lblInfo2.Text = "Address";
+            rBtSearch3.Text = lblInfo3.Text = "City";
+            rBtSearch4.Text = lblInfo4.Text = "State";
             rBtSearch5.Text = lblInfo5.Text = "Zip Code";
 
             rBtSearch6.Visible = false;
@@ -220,7 +299,7 @@ namespace MusicStoreInventory
             txtInfo1.Text = txtInfo2.Text = txtInfo3.Text = txtInfo4.Text = txtInfo5.Text = "";
             gBxRowInfo.Text = "Transaction Info:";
             rBtSearch1.Text = lblInfo1.Text = "Customer";
-            rBtSearch2.Text = lblInfo2.Text = "Instrumer";
+            rBtSearch2.Text = lblInfo2.Text = "Instrument";
             rBtSearch3.Text = lblInfo3.Text = "Sale Price";
             rBtSearch4.Text = lblInfo4.Text = "Listed Price";
             rBtSearch5.Text = lblInfo5.Text = "Payment Type";
@@ -238,8 +317,9 @@ namespace MusicStoreInventory
             if (lastInfoState != AddEditDeleteState.ADD)
             {
                 int row = e.RowIndex;
-                //int columns = dgvMain.Columns.Count - 1;
+                //int maxColumn = dgvMain.Columns.Count - 1;
 
+                lblID.Text = dgvMain.Rows[row].Cells[0].Value.ToString();
                 txtInfo5.Text = dgvMain.Rows[row].Cells[5].Value.ToString();
                 txtInfo4.Text = dgvMain.Rows[row].Cells[4].Value.ToString();
                 txtInfo3.Text = dgvMain.Rows[row].Cells[3].Value.ToString();
@@ -275,35 +355,6 @@ namespace MusicStoreInventory
                 TransactionsTableAdapter adapter = new TransactionsTableAdapter();
                 dgvMain.DataSource = instrument_DatabaseDataSet.Transactions;
                 adapter.Fill(this.instrument_DatabaseDataSet.Transactions);
-            }
-        }
-
-        private bool validateSearchInput(string input)
-        {
-            if (rBtTableInstruments.Checked)
-            {
-                if (rBtSearch4.Checked)
-                {
-                    double number;
-                    return double.TryParse(txtSearch.Text, out number);
-                }
-                else
-                    return true;
-            }
-            else if (rBtTableCustomers.Checked)
-            {
-                if (rBtSearch5.Checked)
-                {
-                    int number;
-                    return int.TryParse(txtSearch.Text, out number);
-                }
-                else
-                    return true;
-            }
-            else
-            {
-
-                return true;
             }
         }
     }
