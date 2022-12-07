@@ -39,6 +39,7 @@ namespace MusicStoreInventory
         // FormMain Events
         private void FormMain_Load(object sender, EventArgs e)
         {
+            instrument_DatabaseDataSet.Instruments.Columns["Price"].SetOrdinal(4);
             data = new SQL_Helper("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\"|DataDirectory|\\Instrument Database.mdb\"");
             RBtTableInstruments_Click(new Button(), new MouseEventArgs(MouseButtons.Left, 0, 0, 0, 0));
             BtnAdd_Click(new Button(), new MouseEventArgs(MouseButtons.Left, 0, 0, 0, 0));
@@ -158,8 +159,6 @@ namespace MusicStoreInventory
             if (lastInfoState == AddEditDeleteState.ADD)
                 return;
 
-            lblID.Text = "#";
-            txtInfo1.Text = txtInfo2.Text = txtInfo3.Text = txtInfo4.Text = txtInfo5.Text = "";
             lastInfoState = AddEditDeleteState.ADD;
             btnInfoEnter.Text = "Add";
             btnAdd.BackColor = Color.FromName(SELECTED_BUTTON_COLOR);
@@ -180,7 +179,14 @@ namespace MusicStoreInventory
             btnEdit.BackColor = Color.FromName(SELECTED_BUTTON_COLOR);
             btnDelete.BackColor = Color.FromName(DEFAULT_BUTTON_COLOR);
 
-            DgvMain_CellClick(new DataGridView(), new DataGridViewCellEventArgs(dgvMain.SelectedCells[0].ColumnIndex, dgvMain.SelectedCells[0].RowIndex));
+            try
+            {
+                DgvMain_CellClick(new DataGridView(), new DataGridViewCellEventArgs(dgvMain.SelectedCells[0].ColumnIndex, dgvMain.SelectedCells[0].RowIndex));
+            }
+            catch (Exception)
+            {
+                clearInfoGBx();
+            }
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
@@ -194,11 +200,21 @@ namespace MusicStoreInventory
             btnEdit.BackColor = Color.FromName(DEFAULT_BUTTON_COLOR);
             btnDelete.BackColor = Color.FromName(SELECTED_BUTTON_COLOR);
 
-            DgvMain_CellClick(new DataGridView(), new DataGridViewCellEventArgs(dgvMain.SelectedCells[0].ColumnIndex, dgvMain.SelectedCells[0].RowIndex));
+            try
+            {
+                DgvMain_CellClick(new DataGridView(), new DataGridViewCellEventArgs(dgvMain.SelectedCells[0].ColumnIndex, dgvMain.SelectedCells[0].RowIndex));
+            }
+            catch (Exception)
+            {
+                clearInfoGBx();
+            }
         }
 
         private void BtnInfoEnter_Click(object sender, EventArgs e)
         {
+            if (lastInfoState != AddEditDeleteState.ADD && lblID.Text == "#")
+                return;
+            
             string table;
             if (lastTable == TableStates.INSTRUMENTS)
                 table = "Instruments";
@@ -221,30 +237,13 @@ namespace MusicStoreInventory
                 {
                     data.delete(table, lblID.Text);
                 }
+
+                refreshForm();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
-            }
-
-            if (lastInfoState == AddEditDeleteState.EDIT)
-            {
-                int row = dgvMain.SelectedCells[0].RowIndex;
-                int column = dgvMain.SelectedCells[0].ColumnIndex;
-                refreshForm();
-                DgvMain_CellClick(new DataGridView(), new DataGridViewCellEventArgs(column, row));
-            }
-            else
-                refreshForm();
-        }
-
-        private void BtnTest_Click(object sender, EventArgs e)
-        {
-            string input = "";
-            double temp = 0;
-            //MessageBox.Show("Converted: " + double.TryParse(input, out temp).ToString() + " " + temp.ToString());
-            // input = temp.ToString("C");
-            //MessageBox.Show("Formated: " + input);
+            }            
         }
 
         private void RBtTableInstruments_Click(object sender, EventArgs e)
@@ -252,7 +251,6 @@ namespace MusicStoreInventory
             if (lastTable == TableStates.INSTRUMENTS)
                 return;
 
-            txtInfo1.Text = txtInfo2.Text = txtInfo3.Text = txtInfo4.Text = txtInfo5.Text = "";
             gBxRowInfo.Text = "Instrument Info:";
             rBtSearch1.Text = lblInfo1.Text = "Name";
             rBtSearch2.Text = lblInfo2.Text = "Make";
@@ -273,7 +271,6 @@ namespace MusicStoreInventory
             if (lastTable == TableStates.CUSTOMERS)
                 return;
 
-            txtInfo1.Text = txtInfo2.Text = txtInfo3.Text = txtInfo4.Text = txtInfo5.Text = "";
             gBxRowInfo.Text = "Customer Info:";
             rBtSearch1.Text = lblInfo1.Text = "Name";
             rBtSearch2.Text = lblInfo2.Text = "Address";
@@ -294,9 +291,6 @@ namespace MusicStoreInventory
             if (lastTable == TableStates.TRANSACTIONS)
                 return;
 
-            txtInfo1.Text = txtInfo2.Text = txtInfo3.Text = txtInfo4.Text = txtInfo5.Text = "";
-
-            txtInfo1.Text = txtInfo2.Text = txtInfo3.Text = txtInfo4.Text = txtInfo5.Text = "";
             gBxRowInfo.Text = "Transaction Info:";
             rBtSearch1.Text = lblInfo1.Text = "Customer";
             rBtSearch2.Text = lblInfo2.Text = "Instrument";
@@ -314,18 +308,25 @@ namespace MusicStoreInventory
 
         private void DgvMain_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (lastInfoState != AddEditDeleteState.ADD)
+            try
             {
-                int row = e.RowIndex;
-                //int maxColumn = dgvMain.Columns.Count - 1;
+                if (lastInfoState != AddEditDeleteState.ADD)
+                {
+                    int row = e.RowIndex;
+                    //int maxColumn = dgvMain.Columns.Count - 1;
 
-                lblID.Text = dgvMain.Rows[row].Cells[0].Value.ToString();
-                txtInfo5.Text = dgvMain.Rows[row].Cells[5].Value.ToString();
-                txtInfo4.Text = dgvMain.Rows[row].Cells[4].Value.ToString();
-                txtInfo3.Text = dgvMain.Rows[row].Cells[3].Value.ToString();
-                txtInfo2.Text = dgvMain.Rows[row].Cells[2].Value.ToString();
-                txtInfo1.Text = dgvMain.Rows[row].Cells[1].Value.ToString();
-                lblID.Text = dgvMain.Rows[row].Cells[0].Value.ToString();
+                    lblID.Text = dgvMain.Rows[row].Cells[0].Value.ToString();
+                    txtInfo5.Text = dgvMain.Rows[row].Cells[5].Value.ToString();
+                    txtInfo4.Text = dgvMain.Rows[row].Cells[4].Value.ToString();
+                    txtInfo3.Text = dgvMain.Rows[row].Cells[3].Value.ToString();
+                    txtInfo2.Text = dgvMain.Rows[row].Cells[2].Value.ToString();
+                    txtInfo1.Text = dgvMain.Rows[row].Cells[1].Value.ToString();
+                    lblID.Text = dgvMain.Rows[row].Cells[0].Value.ToString();
+                }
+            }
+            catch (Exception)
+            {
+                clearInfoGBx();
             }
         }
 
@@ -356,6 +357,13 @@ namespace MusicStoreInventory
                 dgvMain.DataSource = instrument_DatabaseDataSet.Transactions;
                 adapter.Fill(this.instrument_DatabaseDataSet.Transactions);
             }
+            clearInfoGBx();
+        }
+
+        private void clearInfoGBx()
+        {
+            lblID.Text = "#";
+            txtInfo1.Text = txtInfo2.Text = txtInfo3.Text = txtInfo4.Text = txtInfo5.Text = "";
         }
     }
 }

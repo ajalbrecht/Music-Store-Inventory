@@ -45,7 +45,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnTest = new System.Windows.Forms.Button();
             this.gBxSelectTable = new System.Windows.Forms.GroupBox();
             this.rBtTableTransactions = new System.Windows.Forms.RadioButton();
             this.rBtTableCustomers = new System.Windows.Forms.RadioButton();
@@ -257,17 +256,6 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
-            // btnTest
-            // 
-            this.btnTest.Location = new System.Drawing.Point(388, 28);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(75, 23);
-            this.btnTest.TabIndex = 20;
-            this.btnTest.TabStop = false;
-            this.btnTest.Text = "test";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.BtnTest_Click);
-            // 
             // gBxSelectTable
             // 
             this.gBxSelectTable.Controls.Add(this.rBtTableTransactions);
@@ -275,7 +263,7 @@
             this.gBxSelectTable.Controls.Add(this.rBtTableInstruments);
             this.gBxSelectTable.Location = new System.Drawing.Point(12, 12);
             this.gBxSelectTable.Name = "gBxSelectTable";
-            this.gBxSelectTable.Size = new System.Drawing.Size(362, 46);
+            this.gBxSelectTable.Size = new System.Drawing.Size(528, 46);
             this.gBxSelectTable.TabIndex = 0;
             this.gBxSelectTable.TabStop = false;
             this.gBxSelectTable.Text = "Select Table:";
@@ -473,12 +461,11 @@
             this.ClientSize = new System.Drawing.Size(767, 436);
             this.Controls.Add(this.gBxRowInfo);
             this.Controls.Add(this.gBxSelectTable);
-            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.gBxAdEdDe);
             this.Controls.Add(this.gBxSearchCriteria);
             this.Controls.Add(this.dgvMain);
             this.Name = "FormMain";
-            this.Text = "Database Manager v2.0";
+            this.Text = "Database Manager v2.1";
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
             this.gBxSearchCriteria.ResumeLayout(false);
@@ -511,7 +498,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.GroupBox gBxSelectTable;
         private System.Windows.Forms.RadioButton rBtTableTransactions;
         private System.Windows.Forms.RadioButton rBtTableCustomers;

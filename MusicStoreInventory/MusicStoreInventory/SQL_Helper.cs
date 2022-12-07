@@ -11,7 +11,7 @@ namespace MusicStoreInventory
     {
         // Variables
         private OleDbConnection myConnection;
-
+        private char[] illegalChars = { ',', '\'', ';' };
 
 
         
@@ -47,9 +47,13 @@ namespace MusicStoreInventory
 
         private string check(string input)
         {
-            for (int i = 0; i < input.Length; ++i)
-                if (input[i] == ',' && input[i] == '\'')
-                    throw new Exception("Invalid Character (" + input[i] + ") Was Used");
+            HashSet<char> characters = new HashSet<char>(); ;
+            foreach (char c in input)
+                characters.Add(c);
+
+            foreach (char illegal in illegalChars)
+                if (characters.Contains(illegal))
+                    throw new Exception("Invalid Character ( " + illegal + " ) Was Used");
             return input;
         }
 
@@ -85,7 +89,7 @@ namespace MusicStoreInventory
             return dataTable;
         }
 
-        public void add(string table, string in1, string in2 = "", string in3 = "", string in4 = "", string in5 = "")//, string in6 = "")
+        public void add(string table, string in1, string in2 = "", string in3 = "", string in4 = "", string in5 = "")
         {
             myConnection.Open();
 
@@ -96,29 +100,29 @@ namespace MusicStoreInventory
                     myCommand = new OleDbCommand("INSERT INTO Instruments ([ID],[Instrument_Name],[Make],[Size],[Price],[Quality]) " +
                         "VALUES('"
                         + getNewPK(table) + "','"
-                        + check(in1) + "','"
-                        + check(in2) + "','"
-                        + check(in3) + "','"
-                        + isPrice(in4) + "','"
-                        + check(in5) + "')", myConnection);
+                        + check(in1) +    "','"
+                        + check(in2) +      "','"
+                        + check(in3) +      "','"
+                        + isPrice(in4) +      "','"
+                        + check(in5) +      "')", myConnection);
                 else if (table == "Customers")
                     myCommand = new OleDbCommand("INSERT INTO Customers ([ID],[Customer_Name],[Address],[City],[State],[Zip_Code]) " +
                     "VALUES('"
-                    + getNewPK(table) + "','"
-                        + check(in1) + "','"
-                        + check(in2) + "','"
-                        + check(in3) + "','"
-                        + check(in4) + "','"
-                        + isInt(in5) + "')", myConnection);
+                        + getNewPK(table) + "','"
+                        + check(in1) +      "','"
+                        + check(in2) +      "','"
+                        + check(in3) +      "','"
+                        + check(in4) +      "','"
+                        + isInt(in5) +      "')", myConnection);
                 else if (table == "Transactions")
                     myCommand = new OleDbCommand("INSERT INTO Transactions ([ID],[Customer],[Instrument],[Sale_Price],[Listed_Price],[Payment_Type]) " +
                         "VALUES('"
                         + getNewPK(table) + "','"
-                        + check(in1) + "','"
-                        + check(in2) + "','"
-                        + isPrice(in3) + "','"
-                        + isPrice(in4) + "','"
-                        + check(in5) + "')", myConnection);
+                        + check(in1) +      "','"
+                        + check(in2) +      "','"
+                        + isPrice(in3) +    "','"
+                        + isPrice(in4) +    "','"
+                        + check(in5) +      "')", myConnection);
                 else
                     throw new Exception("Table '" + table + "' Not Found");            
 
@@ -143,27 +147,27 @@ namespace MusicStoreInventory
                 if (table == "Instruments")
                     myCommand = new OleDbCommand("UPDATE Instruments SET "
                         + "Instrument_Name='" + check(in1)
-                        + "', Make='" + check(in2)
-                        + "', Size='" + check(in3)
-                        + "', Price='" + isPrice(in4)
-                        + "', Quality='" + check(in5)
-                        + "' WHERE ID= " + ID, myConnection);
+                        + "', Make='" +         check(in2)
+                        + "', [Size]='" +       check(in3)
+                        + "', Price='" +        isPrice(in4)
+                        + "', Quality='" +      check(in5)
+                        + "' WHERE ID= " +      isInt(ID), myConnection);
                 else if (table == "Customers")
                     myCommand = new OleDbCommand("UPDATE Customers SET "
-                        + "Customer_Name='" + check(in1)
-                        + "', City='" + check(in2)
-                        + "', State='" + check(in3)
-                        + "', Address='" + check(in4)
-                        + "', Zip_Code='" + isInt(in5)
-                        + "' WHERE ID= " + ID, myConnection);
+                        + "Customer_Name='" +   check(in1)
+                        + "', Address='" +      check(in2)
+                        + "', City='" +         check(in3)
+                        + "', State='" +        check(in4)
+                        + "', Zip_Code='" +     isInt(in5)
+                        + "' WHERE ID= " +      isInt(ID), myConnection);
                 else if (table == "Transactions")
                     myCommand = new OleDbCommand("UPDATE Transactions SET "
-                        + "Customer='" + check(in1)
-                        + "', Instrument='" + check(in2)
-                        + "', Sale_Price='" + isPrice(in3)
+                        + "Customer='" +        check(in1)
+                        + "', Instrument='" +   check(in2)
+                        + "', Sale_Price='" +   isPrice(in3)
                         + "', Listed_Price='" + isPrice(in4)
                         + "', Payment_Type='" + check(in5)
-                        + "' WHERE ID= " + ID, myConnection);
+                        + "' WHERE ID= " +      isInt(ID), myConnection);
                 else
                     throw new Exception("Table '" + table + "' not Found");
 
@@ -181,7 +185,7 @@ namespace MusicStoreInventory
         public void delete(string table, string ID)
         {
             myConnection.Open();
-            OleDbCommand myCommand = new OleDbCommand("DELETE FROM " + table + " WHERE ID= " + ID, myConnection);
+            OleDbCommand myCommand = new OleDbCommand("DELETE FROM " + check(table) + " WHERE ID= " + isInt(ID), myConnection);
 
             try
             {
