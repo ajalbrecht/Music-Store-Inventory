@@ -7,6 +7,7 @@ The goal of this project is to provide a inventory managment system geared twoar
 How to run the program: 
 1) after downloading and unziping the zip file navigate to the folder Music-Store-Inventory (path may be changed NOTE TO MOIDYF LATER)
 2) enter the following file path into the file explorer or terminal .../Music-Store-Inventory/MusicStoreInventory/MusicStoreInventory/bin/Release/MusicStoreInventory.exe
+
 where the ... represents the locatoin of the downloaded folder on your computer.
 
 Using the program:
