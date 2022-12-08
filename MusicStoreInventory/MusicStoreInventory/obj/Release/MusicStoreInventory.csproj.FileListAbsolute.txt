@@ -9,3 +9,15 @@ C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Re
 C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.csproj.CoreCompileInputs.cache
 C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.exe
 C:\Users\patrickmcbrien\Downloads\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.pdb
+C:\Users\Windoge\Downloads\Sand\Music-Store-Inventory-main\MusicStoreInventory\MusicStoreInventory\bin\Release\Instrument Database.mdb
+C:\Users\Windoge\Downloads\Sand\Music-Store-Inventory-main\MusicStoreInventory\MusicStoreInventory\bin\Release\MusicStoreInventory.exe.config
+C:\Users\Windoge\Downloads\Sand\Music-Store-Inventory-main\MusicStoreInventory\MusicStoreInventory\bin\Release\MusicStoreInventory.exe
+C:\Users\Windoge\Downloads\Sand\Music-Store-Inventory-main\MusicStoreInventory\MusicStoreInventory\bin\Release\MusicStoreInventory.pdb
+C:\Users\Windoge\Downloads\Sand\Music-Store-Inventory-main\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.csproj.AssemblyReference.cache
+C:\Users\Windoge\Downloads\Sand\Music-Store-Inventory-main\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.csproj.SuggestedBindingRedirects.cache
+C:\Users\Windoge\Downloads\Sand\Music-Store-Inventory-main\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.FormMain.resources
+C:\Users\Windoge\Downloads\Sand\Music-Store-Inventory-main\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.Properties.Resources.resources
+C:\Users\Windoge\Downloads\Sand\Music-Store-Inventory-main\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.csproj.GenerateResource.cache
+C:\Users\Windoge\Downloads\Sand\Music-Store-Inventory-main\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.csproj.CoreCompileInputs.cache
+C:\Users\Windoge\Downloads\Sand\Music-Store-Inventory-main\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.exe
+C:\Users\Windoge\Downloads\Sand\Music-Store-Inventory-main\MusicStoreInventory\MusicStoreInventory\obj\Release\MusicStoreInventory.pdb
